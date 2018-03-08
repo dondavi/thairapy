@@ -26,3 +26,4 @@ wp-admin/
 phpinfo.php
 .htaccess
 .idea/
+.idea/workspace.xml
