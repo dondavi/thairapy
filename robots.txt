@@ -1,0 +1,8 @@
+# This space intentionally left blank
+User-Agent: *
+Allow: /wp-content/uploads/
+Disallow: /wp-admin/
+Disallow: /wp-content/plugins/
+Disallow: /wp-includes/
+Disallow: /readme.html
+Disallow: /license.txt
