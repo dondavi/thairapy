@@ -25,4 +25,4 @@ wp-admin/
 
 phpinfo.php
 .htaccess
-.idea/git clean -f
+.idea/
