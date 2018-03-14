@@ -9,10 +9,6 @@ Demo: <http://auth0wp.azurewebsites.net>
 
 Documentation: <https://auth0.com/docs/cms>
 
-## Important note on 3.5
-
-This is a major update that requires changes to your Auth0 Dashboard to be completed. You can save a new [API token](https://auth0.com/docs/api/management/v2/tokens#get-a-token-manually) in your Basic settings in wp-admin before upgrading and the changes will be made automatically during the update. Otherwise, please review your [Client Advanced Settings](https://auth0.com/docs/cms/wordpress/configuration#client-setup), specifically your Grant Types, and [authorize your Client for the Management API](https://auth0.com/docs/cms/wordpress/configuration#authorize-the-client-for-the-management-api). 
-
 ## Contributions
 
 All PR should be done towards the `dev` branch.
@@ -70,7 +66,7 @@ To hook to this filter, you will need to do the following:
 
 This filter is called after the plugin finds the related user to login (based on the auth0 `user_id`). It allows to override the default behaviour with custom matching rules(for example, always match by email).
 
-If the filter returns null, it will lookup by email as stated in the [How does it work?](https://auth0.com/docs/cms/wordpress/how-does-it-work) document.
+If the filter returns null, it will lookup by email as stated in the [How doe it work?](https://auth0.com/docs/cms/wordpress/how-does-it-work) document.
 
 ```
     add_filter( 'auth0_get_wp_user', 'auth0_get_wp_user_handler', 1, 2 );
@@ -83,23 +79,6 @@ If the filter returns null, it will lookup by email as stated in the [How does i
 
         return null;
     }   
-```
-
-### Customize autologin connection
-
-This filter will allow to programatically set which connection the plugin should use when autologin is enabled.
-
-```
-    add_filter( 'auth0_get_auto_login_connection', 'auth0_get_auto_login_connection', 1, 1 );
-
-    function auth0_get_auto_login_connection($connection) {
-
-        if ( /* check some condition */ ) {
-            return 'twitter';
-        }
-
-        return $connection;
-    }
 ```
 
 ## API authentication
@@ -186,6 +165,7 @@ And can be customized by adding the following parameters:
 * social_big_buttons: boolean
 * gravatar: boolean
 * username_style: string, "email" or "username"
+* remember_last_login: boolean
 * icon_url: string (valid url)
 * extra_conf: string, valid json
 * show_as_modal: boolean

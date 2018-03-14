@@ -3,7 +3,7 @@
 Plugin Name: Advanced Custom Fields PRO
 Plugin URI: https://www.advancedcustomfields.com/
 Description: Customise WordPress with powerful, professional and intuitive fields.
-Version: 5.6.8
+Version: 5.6.7
 Author: Elliot Condon
 Author URI: http://www.elliotcondon.com/
 Copyright: Elliot Condon
@@ -18,7 +18,7 @@ if( ! class_exists('ACF') ) :
 class ACF {
 	
 	/** @var string The plugin version number */
-	var $version = '5.6.8';
+	var $version = '5.6.7';
 	
 	
 	/** @var array The plugin settings array */
@@ -554,55 +554,62 @@ class ACF {
 		
 	}
 	
-	/**
-	*  has_setting
-	*
-	*  Returns true if has setting.
-	*
-	*  @date	2/2/18
-	*  @since	5.6.5
-	*
-	*  @param	string $name
-	*  @return	boolean
-	*/
 	
-	function has_setting( $name ) {
-		return isset($this->settings[ $name ]);
-	}
-	
-	/**
+	/*
 	*  get_setting
 	*
-	*  Returns a setting.
+	*  This function will return a value from the settings array found in the acf object
 	*
+	*  @type	function
 	*  @date	28/09/13
 	*  @since	5.0.0
 	*
-	*  @param	string $name
-	*  @return	mixed
+	*  @param	$name (string) the setting name to return
+	*  @param	$value (mixed) default value
+	*  @return	$value
 	*/
 	
-	function get_setting( $name ) {
-		return isset($this->settings[ $name ]) ? $this->settings[ $name ] : null;
+	function get_setting( $name, $value = null ) {
+		
+		// check settings
+		if( isset($this->settings[ $name ]) ) {
+			$value = $this->settings[ $name ];
+		}
+		
+		
+		// filter
+		if( substr($name, 0, 1) !== '_' ) {
+			$value = apply_filters( "acf/settings/{$name}", $value );
+		}
+		
+		
+		// return
+		return $value;
+		
 	}
 	
-	/**
+	
+	/*
 	*  update_setting
 	*
-	*  Updates a setting.
+	*  This function will update a value into the settings array found in the acf object
 	*
+	*  @type	function
 	*  @date	28/09/13
 	*  @since	5.0.0
 	*
-	*  @param	string $name
-	*  @param	mixed $value
+	*  @param	$name (string)
+	*  @param	$value (mixed)
 	*  @return	n/a
 	*/
 	
 	function update_setting( $name, $value ) {
+		
 		$this->settings[ $name ] = $value;
 		return true;
+		
 	}
+	
 }
 
 

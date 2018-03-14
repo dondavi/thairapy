@@ -4,24 +4,15 @@
 
   var uuids = '<?php echo $user_profile->user_id; ?>';
   document.addEventListener("DOMContentLoaded", function() {
-    if (typeof(auth0) === 'undefined') {
-      return;
-    }
+    var lock = new Auth0Lock('<?php echo $client_id; ?>', '<?php echo $domain; ?>');
+    lock.$auth0.getSSOData(function(err, data) {
+      if (!err && ( !data.sso || uuids != data.lastUsedUserID) ) {
 
-    var webAuth = new auth0.WebAuth({
-      clientID:'<?php echo $client_id; ?>',
-      domain:'<?php echo $domain; ?>'
-    });
+        window.location = '<?php echo html_entity_decode( $logout_url ); ?>';
 
-    var options = <?php echo json_encode( $lock_options->get_sso_options() ); ?>;
-    webAuth.checkSession(options, function (err, authResult) {
-      if (err !== null) {
-        if(err.error ==='login_required') {
-          window.location = '<?php echo html_entity_decode( $logout_url ); ?>';
-        }
       }
     });
-
   });
+
 })();
 </script>

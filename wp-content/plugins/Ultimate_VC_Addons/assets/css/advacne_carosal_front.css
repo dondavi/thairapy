@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /*--- advance carosal front-end-------*/
 .vc_element.element-ultimate_carousel {
 float: left;
@@ -9,16 +8,4 @@ padding-left: 50%;
 display: block;
 float: left;
 padding-left: 50%;
-=======
-/*--- advance carosal front-end-------*/
-.vc_element.element-ultimate_carousel {
-float: left;
-display: block;
-padding-left: 50%;
-}
-.vc_element.element-icon_timeline {
-display: block;
-float: left;
-padding-left: 50%;
->>>>>>> 676c6ed3ea2781a8ef08b445789c78df38727548
 }

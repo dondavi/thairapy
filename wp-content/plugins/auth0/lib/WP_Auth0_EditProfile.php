@@ -38,7 +38,7 @@ class WP_Auth0_EditProfile {
 		$auth0_repeat_password = isset( $_POST['auth0_repeat_password'] ) ? $_POST['auth0_repeat_password'] : null;
 
 		if ( $auth0_password != $auth0_repeat_password ) {
-			$errors->add( 'auth0_password', __( '<strong>ERROR</strong>: The password does not match', 'wp-auth0' ), array( 'form-field' => 'auth0_password' ) );
+			$errors->add( 'auth0_password', __( '<strong>ERROR</strong>: The password does not match' ), array( 'form-field' => 'auth0_password' ) );
 		}
 	}
 
@@ -185,23 +185,21 @@ class WP_Auth0_EditProfile {
 	}
 
 	public function show_change_password() {
-		$current_user = get_currentauth0user();
-		$user_profile = $current_user->auth0_obj;
+    $current_user = get_currentauth0user();
+    $user_profile = $current_user->auth0_obj;
 
 		if ( empty( $user_profile ) ) return;
 
 		$connection = null;
 
-		if ( ! empty( $user_profile->identities ) && is_array( $user_profile->identities ) ) {
-			foreach ( $user_profile->identities as $identity ) {
-				if ( $identity->provider === 'auth0' ) {
-					$connection = $identity->connection;
-				}
+		foreach ( $user_profile->identities as $identity ) {
+			if ( $identity->provider === 'auth0' ) {
+				$connection = $identity->connection;
 			}
 		}
 
 		if ( $connection === null ) return;
-        ?>
+?>
     <script>
       jQuery('.wp-pwd').parent().parent().hide();
     </script>
@@ -228,21 +226,20 @@ class WP_Auth0_EditProfile {
 	}
 
 	public function disable_email_field() {
-		$current_user = get_currentauth0user();
-		$user_profile = $current_user->auth0_obj;
+    $current_user = get_currentauth0user();
+    $user_profile = $current_user->auth0_obj;
 
 		if ( $user_profile && !empty( $user_profile ) ) {
 			$connection = null;
-			if ( ! empty( $user_profile->identities ) && is_array( $user_profile->identities ) ) {
-				foreach ( $user_profile->identities as $identity ) {
-					if ( $identity->provider === 'auth0' ) {
-						$connection = $identity->connection;
-					}
+
+			foreach ( $user_profile->identities as $identity ) {
+				if ( $identity->provider === 'auth0' ) {
+					$connection = $identity->connection;
 				}
 			}
 
 			if ( $connection === null ) {
-            ?>
+?>
         <script>
           jQuery(document).ready( function($) {
             if ( $('input[name=email]').length ) {
@@ -258,7 +255,7 @@ class WP_Auth0_EditProfile {
             }
           });
         </script>
-            <?php
+        <?php
 			}
 		}
 	}
@@ -274,7 +271,7 @@ class WP_Auth0_EditProfile {
     $current_user = wp_get_current_user();
     $user_profile =  get_currentauth0userinfo();
 
-		$app_token = $this->a0_options->get( 'auth0_app_token' );
+		$app_token = $this->a0_options->get( 'auth0_app_token' );;
 
 		if ( !$app_token ) {
 			return;
@@ -299,17 +296,17 @@ class WP_Auth0_EditProfile {
 			}
 
 			if ( $connection === null ) {
-				$errors->add( 'user_email', __( "<strong>ERROR</strong>: You can't change your email if you are using a social connection.", "wp-auth0" ), array( 'form-field' => 'email' ) );
+				$errors->add( 'user_email', __( "<strong>ERROR</strong>: You can't change your email if you are using a social connection." ), array( 'form-field' => 'email' ) );
 				return false;
 			}
 
 			if ( ! is_email( $_POST['email'] ) ) {
-				$errors->add( 'user_email', __( "<strong>ERROR</strong>: The email address isn&#8217;t correct.", "wp-auth0" ), array( 'form-field' => 'email' ) );
+				$errors->add( 'user_email', __( "<strong>ERROR</strong>: The email address isn&#8217;t correct." ), array( 'form-field' => 'email' ) );
 				return false;
 			}
 
 			if ( $wpdb->get_var( $wpdb->prepare( "SELECT user_email FROM {$wpdb->users} WHERE user_email=%s", $_POST['email'] ) ) ) {
-				$errors->add( 'user_email', __( "<strong>ERROR</strong>: The email address is already used.", "wp-auth0" ), array( 'form-field' => 'email' ) );
+				$errors->add( 'user_email', __( "<strong>ERROR</strong>: The email address is already used." ), array( 'form-field' => 'email' ) );
 				delete_option( $current_user->ID . '_new_email' );
 				return;
 			}

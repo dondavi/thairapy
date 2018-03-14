@@ -4,7 +4,7 @@ $lock_options = new WP_Auth0_Lock_Options( $specialSettings );
 
 if ( ! $lock_options->can_show() ) {
 ?>
-    <p><?php _e( 'Auth0 Integration has not yet been set up! Please visit your Wordpress Auth0 settings and fill in the required settings.', 'wp-auth0' ); ?></p>
+    <p><?php _e( 'Auth0 Integration has not yet been set up! Please visit your Wordpress Auth0 settings and fill in the required settings.', WPA0_LANG ); ?></p>
 <?php
 	return;
 }
@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", function() {
         callback = function(err,profile, token) {
 
             if (!err) {
-                post('<?php echo site_url( 'index.php?auth0=implicit' ); ?>', {
+                post('<?php echo home_url( '/index.php?auth0=implicit' ); ?>', {
                     token:token,
                     state:<?php echo json_encode( $lock_options->get_state_obj() ); ?>
                 }, 'POST');
@@ -162,7 +162,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if (hashParams && hashParams.id_token) {
             ignore_sso = true;
 
-            post('<?php echo site_url( 'index.php?auth0=implicit' ); ?>', {
+            post('<?php echo home_url( '/index.php?auth0=implicit' ); ?>', {
                     token:hashParams.id_token,
                     state:hashParams.state
                 }, 'POST');

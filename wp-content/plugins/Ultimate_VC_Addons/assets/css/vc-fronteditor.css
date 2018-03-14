@@ -1,14 +1,6 @@
-<<<<<<< HEAD
 .smile_icon_list div:last-child>li .icon_list_connector {
     display: none
 }
 .aio-icon-description {
     word-break: break-all
-=======
-.smile_icon_list div:last-child>li .icon_list_connector {
-    display: none
-}
-.aio-icon-description {
-    word-break: break-all
->>>>>>> 676c6ed3ea2781a8ef08b445789c78df38727548
 }

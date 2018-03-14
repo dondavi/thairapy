@@ -48,10 +48,10 @@ class WP_Auth0_Api_Operations {
 		}
 
 		$login_script = str_replace( '{THE_WS_TOKEN}', $migration_token, WP_Auth0_CustomDBLib::$login_script );
-		$login_script = str_replace( '{THE_WS_URL}', site_url( 'index.php?a0_action=migration-ws-login' ), $login_script );
+		$login_script = str_replace( '{THE_WS_URL}', get_home_url() . '/index.php?a0_action=migration-ws-login', $login_script );
 
 		$get_user_script = str_replace( '{THE_WS_TOKEN}', $migration_token, WP_Auth0_CustomDBLib::$get_user_script );
-		$get_user_script = str_replace( '{THE_WS_URL}', site_url( 'index.php?a0_action=migration-ws-get-user' ), $get_user_script );
+		$get_user_script = str_replace( '{THE_WS_URL}', get_home_url() . '/index.php?a0_action=migration-ws-get-user', $get_user_script );
 
 		$connection->options->customScripts->login = $login_script;
 		$connection->options->customScripts->get_user = $get_user_script;
@@ -94,10 +94,10 @@ class WP_Auth0_Api_Operations {
 			}
 
 			$login_script = str_replace( '{THE_WS_TOKEN}', $migration_token, WP_Auth0_CustomDBLib::$login_script );
-			$login_script = str_replace( '{THE_WS_URL}', site_url( 'index.php?a0_action=migration-ws-login' ), $login_script );
+			$login_script = str_replace( '{THE_WS_URL}', get_home_url() . '/index.php?a0_action=migration-ws-login', $login_script );
 
 			$get_user_script = str_replace( '{THE_WS_TOKEN}', $migration_token, WP_Auth0_CustomDBLib::$get_user_script );
-			$get_user_script = str_replace( '{THE_WS_URL}', site_url( 'index.php?a0_action=migration-ws-get-user' ), $get_user_script );
+			$get_user_script = str_replace( '{THE_WS_URL}', get_home_url() . '/index.php?a0_action=migration-ws-get-user', $get_user_script );
 
 			$body['options'] = array(
 				'enabledDatabaseCustomization' => true,
@@ -179,7 +179,7 @@ class WP_Auth0_Api_Operations {
 			$connections = WP_Auth0_Api_Client::search_connection( $domain, $app_token, $strategy );
 
 			// if ( ! $connections ) {
-			//  $error = __( 'There was an error searching your active social connections.', 'wp-auth0' );
+			//  $error = __( 'There was an error searching your active social connections.', WPA0_LANG );
 			//  $this->add_validation_error( $error );
 			//
 			//  $input[$main_key] = 0;
@@ -229,7 +229,7 @@ class WP_Auth0_Api_Operations {
 					$response = WP_Auth0_Api_Client::update_connection($domain, $app_token, $selected_connection->id, $data);
 
 					if ( false === $response ) {
-						$error = __( 'There was an error updating your social connection', 'wp-auth0' );
+						$error = __( 'There was an error updating your social connection', WPA0_LANG );
 						throw new Exception( $error );
 
 						$input[$main_key] = 0;
@@ -256,7 +256,7 @@ class WP_Auth0_Api_Operations {
 					$response = WP_Auth0_Api_Client::update_connection($domain, $app_token, $selected_connection->id, $data);
 
 					if ( false === $response ) {
-						$error = __( 'There was an error updating your social connection', 'wp-auth0' );
+						$error = __( 'There was an error updating your social connection', WPA0_LANG );
 						throw new Exception( $error );
 
 						$input[$main_key] = 0;
@@ -277,7 +277,7 @@ class WP_Auth0_Api_Operations {
 					);
 
 					if ( false === WP_Auth0_Api_Client::create_connection($domain, $app_token, $data) ) {
-						$error = __( 'There was an error creating your social connection', 'wp-auth0' );
+						$error = __( 'There was an error creating your social connection', WPA0_LANG );
 						throw new Exception( $error );
 
 						$input[$main_key] = 0;
@@ -297,7 +297,7 @@ class WP_Auth0_Api_Operations {
 					}
 
 					if ( false === $a = WP_Auth0_Api_Client::update_connection($domain, $app_token, $selected_connection->id, $data) ) {
-						$error = __( 'There was an error disabling your social connection for this app.', 'wp-auth0' );
+						$error = __( 'There was an error disabling your social connection for this app.', WPA0_LANG );
 						throw new Exception( $error );
 						$input[$main_key] = 1;
 					}
@@ -319,7 +319,7 @@ class WP_Auth0_Api_Operations {
 			$rule = WP_Auth0_Api_Client::create_rule( $domain, $app_token, $rule_name, $rule_script );
 
 			if ( $rule === false ) {
-				$error = __( 'There was an error creating the Auth0 rule. You can do it manually from your Auth0 dashboard.', 'wp-auth0' );
+				$error = __( 'There was an error creating the Auth0 rule. You can do it manually from your Auth0 dashboard.', WPA0_LANG );
 				throw new Exception( $error );
 			} else {
 				return $rule->id;
@@ -327,7 +327,7 @@ class WP_Auth0_Api_Operations {
 		}
 		else {
 			if ( false === WP_Auth0_Api_Client::delete_rule($domain, $app_token, $rule_id) ) {
-				$error = __( 'There was an error deleting the Auth0 rule. You can do it manually from your Auth0 dashboard.', 'wp-auth0' );
+				$error = __( 'There was an error deleting the Auth0 rule. You can do it manually from your Auth0 dashboard.', WPA0_LANG );
 				throw new Exception( $error );
 			}
 			return null;

@@ -27,7 +27,6 @@ class AmeActorSelector {
 	private static _ = wsAmeLodash;
 
 	public selectedActor: string = null;
-	public selectedDisplayName: string = 'All';
 
 	private visibleUsers: string[] = [];
 	private subscribers: SelectedActorChangedCallback[] = [];
@@ -128,12 +127,6 @@ class AmeActorSelector {
 		const previousSelection = this.selectedActor;
 		this.selectedActor = actorId;
 		this.highlightSelectedActor();
-
-		if (actorId !== null) {
-			this.selectedDisplayName = this.actorManager.getActor(actorId).displayName;
-		} else {
-			this.selectedDisplayName = 'All';
-		}
 
 		//Notify subscribers that the selection has changed.
 		if (this.selectedActor !== previousSelection) {

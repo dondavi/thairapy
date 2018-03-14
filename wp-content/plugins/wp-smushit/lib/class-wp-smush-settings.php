@@ -69,12 +69,7 @@ if ( ! class_exists( 'WpSmushSettings' ) ) {
 		function get_serialised_settings() {
 			$settings = array();
 			foreach ( $this->settings as $key => $val ) {
-				$value = $this->get_setting( WP_SMUSH_PREFIX . $key );;
-				if ( 'auto' == $key && $value === false ) {
-					$settings[ $key ] = 1;
-				} else {
-					$settings[ $key ] = $value;
-				}
+				$settings[ $key ] = $this->get_setting( WP_SMUSH_PREFIX . $key );
 			}
 			$settings = maybe_serialize( $settings );
 
@@ -218,7 +213,7 @@ if ( ! class_exists( 'WpSmushSettings' ) ) {
 		 * @return bool|mixed|void
 		 *
 		 */
-		function get_setting( $name = '', $default = false ) {
+		function get_setting( $name = '', $default = '' ) {
 
 			if( empty( $name ) ) {
 				return false;

@@ -14,33 +14,22 @@ class AC_ListScreen_Media extends AC_ListScreenPost {
 		$this->set_key( 'wp-media' );
 		$this->set_group( 'media' );
 		$this->set_label( __( 'Media' ) );
+
+		/* @see WP_Media_List_Table */
+		$this->set_list_table_class( 'WP_Media_List_Table' );
 	}
 
 	public function set_manage_value_callback() {
 		add_action( 'manage_media_custom_column', array( $this, 'manage_value' ), 100, 2 );
 	}
 
-	/**
-	 * @return WP_Media_List_Table
-	 */
-	public function get_list_table() {
-		require_once( ABSPATH . 'wp-admin/includes/class-wp-media-list-table.php' );
-
-		return new WP_Media_List_Table( array( 'screen' => $this->get_screen_id() ) );
-	}
-
-	/**
-	 * @param int $id
-	 *
-	 * @return string
-	 */
-	public function get_single_row( $id ) {
+	protected function get_object_by_id( $post_id ) {
 		// Author column depends on this global to be set.
 		global $authordata;
 
-		$authordata = get_userdata( get_post_field( 'post_author', $id ) );
+		$authordata = get_userdata( get_post_field( 'post_author', $post_id ) );
 
-		return parent::get_single_row( $id );
+		return parent::get_object_by_id( $post_id );
 	}
 
 	/**
@@ -51,9 +40,11 @@ class AC_ListScreen_Media extends AC_ListScreenPost {
 	}
 
 	protected function register_column_types() {
-		parent::register_column_types();
+		$this->register_column_type( new AC_Column_CustomField );
+		$this->register_column_type( new AC_Column_Menu );
+		$this->register_column_type( new AC_Column_Actions );
 
-		$this->register_column_types_from_dir( AC()->get_plugin_dir() . 'classes/Column/Media', AC()->get_prefix() );
+		$this->register_column_types_from_dir( AC()->get_plugin_dir() . 'classes/Column/Media', 'AC_' );
 	}
 
 }

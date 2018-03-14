@@ -1,4 +1,3 @@
-<?php if (!defined('WORDFENCE_VERSION')) { exit; } ?>
 <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
 <html><head>
 <title>Your access to this site has been limited</title>

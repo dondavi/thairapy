@@ -276,3 +276,6 @@ abstract class wfModel {
 		$this->{$this->getIDColumn()} = $value;
 	}
 }
+
+
+?>

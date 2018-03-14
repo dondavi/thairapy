@@ -9,6 +9,7 @@ $show_icon = isset( $instance[ 'show_icon' ] ) ? $instance[ 'show_icon' ] : '';
 $icon_url = isset( $instance[ 'icon_url' ] ) ? $instance[ 'icon_url' ] : '';
 $dict = isset( $instance[ 'dict' ] ) ? $instance[ 'dict' ] : '';
 $extra_conf = isset( $instance[ 'extra_conf' ] ) ? $instance[ 'extra_conf' ] : '';
+$remember_last_login = isset( $instance[ 'remember_last_login' ] ) ? $instance[ 'remember_last_login' ] : '';
 $custom_css = isset( $instance[ 'custom_css' ] ) ? $instance[ 'custom_css' ] : '';
 $custom_js = isset( $instance[ 'custom_js' ] ) ? $instance[ 'custom_js' ] : '';
 $redirect_to = isset( $instance[ 'redirect_to' ] ) ? $instance[ 'redirect_to' ] : '';
@@ -77,6 +78,27 @@ $redirect_to = isset( $instance[ 'redirect_to' ] ) ? $instance[ 'redirect_to' ] 
 
 </p>
 <p>
+
+    <label><?php _e( 'Remember last login:' ); ?></label>
+    <br>
+    <div class="radio-wrapper" style="text-align: center;">
+        <input id="<?php echo $this->get_field_id( 'remember_last_login' ); ?>_yes"
+               name="<?php echo $this->get_field_name( 'remember_last_login' ); ?>"
+               type="radio" value="1" <?php echo esc_attr( $remember_last_login ) == 1 ? 'checked="true"' : ''; ?> />
+        <label for="<?php echo $this->get_field_id( 'remember_last_login' ); ?>_yes"><?php _e( 'Yes' ); ?></label>
+        &nbsp;
+        <input id="<?php echo $this->get_field_id( 'remember_last_login' ); ?>_no"
+               name="<?php echo $this->get_field_name( 'remember_last_login' ); ?>"
+               type="radio" value="0" <?php echo esc_attr( $remember_last_login ) == 0 ? 'checked="true"' : ''; ?> />
+        <label for="<?php echo $this->get_field_id( 'remember_last_login' ); ?>_no"><?php _e( 'No' ); ?></label>
+        &nbsp;
+        <input id="<?php echo $this->get_field_id( 'remember_last_login' ); ?>_inherit"
+               name="<?php echo $this->get_field_name( 'remember_last_login' ); ?>"
+               type="radio" value="" <?php echo esc_attr( $remember_last_login ) === '' ? 'checked="true"' : ''; ?> />
+        <label for="<?php echo $this->get_field_id( 'remember_last_login' ); ?>_no"><?php _e( 'Default Setting' ); ?></label>
+    </div>
+</p>
+<p>
     <label for="<?php echo $this->get_field_id( 'icon_url' ); ?>"><?php _e( 'Icon Url:' ); ?></label>
     <input type="text" id="<?php echo $this->get_field_id( 'icon_url' ); ?>"
            name="<?php echo $this->get_field_name( 'icon_url' ); ?>"
@@ -93,12 +115,12 @@ $redirect_to = isset( $instance[ 'redirect_to' ] ) ? $instance[ 'redirect_to' ] 
         <?php echo esc_attr( $dict ); ?>
     </textarea>
     <br/><span class="description">
-            <?php echo __( 'This is the widget\'s dict param.', 'wp-auth0' ); ?>
-        <a target="_blank" href="https://github.com/auth0/lock/wiki/Auth0Lock-customization#dict-stringobject"><?php echo __( 'More info', 'wp-auth0' ); ?></a>
+            <?php echo __( 'This is the widget\'s dict param.', WPA0_LANG ); ?>
+        <a target="_blank" href="https://github.com/auth0/lock/wiki/Auth0Lock-customization#dict-stringobject"><?php echo __( 'More info', WPA0_LANG ); ?></a>
         </span><br>
         <span class="description">
-            <i><b><?php echo __( 'Note', 'wp-auth0' ); ?>:</b>
-                <?php echo __( 'This will override the "Form title" setting', 'wp-auth0' ); ?>
+            <i><b><?php echo __( 'Note', WPA0_LANG ); ?>:</b>
+                <?php echo __( 'This will override the "Form title" setting', WPA0_LANG ); ?>
             </i>
         </span>
     </span>
@@ -110,12 +132,12 @@ $redirect_to = isset( $instance[ 'redirect_to' ] ) ? $instance[ 'redirect_to' ] 
         <?php echo esc_attr( $extra_conf ); ?>
     </textarea>
     <br/><span class="description">
-            <?php echo __( 'This field allows you to set all the widget settings.', 'wp-auth0' ); ?>
-        <a target="_blank" href="https://github.com/auth0/lock/wiki/Auth0Lock-customization"><?php echo __( 'More info', 'wp-auth0' ); ?></a>
+            <?php echo __( 'This field allows you to set all the widget settings.', WPA0_LANG ); ?>
+        <a target="_blank" href="https://github.com/auth0/lock/wiki/Auth0Lock-customization"><?php echo __( 'More info', WPA0_LANG ); ?></a>
         </span><br>
         <span class="description">
-            <i><b><?php echo __( 'Note', 'wp-auth0' ); ?>:</b>
-                <?php echo __( 'The other settings will override this configuration', 'wp-auth0' ); ?>
+            <i><b><?php echo __( 'Note', WPA0_LANG ); ?>:</b>
+                <?php echo __( 'The other settings will override this configuration', WPA0_LANG ); ?>
             </i>
         </span>
     </span>
@@ -127,8 +149,8 @@ $redirect_to = isset( $instance[ 'redirect_to' ] ) ? $instance[ 'redirect_to' ] 
         <?php echo esc_attr( $custom_css ); ?>
     </textarea>
     <br/><span class="description">
-            <?php echo __( 'This should be a valid CSS to customize the Auth0 login widget.', 'wp-auth0' ); ?>
-        <a target="_blank" href="https://github.com/auth0/wp-auth0#can-i-customize-the-login-widget"><?php echo __( 'More info', 'wp-auth0' ); ?></a>
+            <?php echo __( 'This should be a valid CSS to customize the Auth0 login widget.', WPA0_LANG ); ?>
+        <a target="_blank" href="https://github.com/auth0/wp-auth0#can-i-customize-the-login-widget"><?php echo __( 'More info', WPA0_LANG ); ?></a>
         </span>
     </span>
 </p>
@@ -139,5 +161,5 @@ $redirect_to = isset( $instance[ 'redirect_to' ] ) ? $instance[ 'redirect_to' ] 
         <?php echo esc_attr( $custom_js ); ?>
     </textarea>
     <br/>
-    <span class="description"><?php echo __( 'This should be a valid JS to customize the Auth0 login widget to, for example, add custom buttons. ', 'wp-auth0' ); ?><a target="_blank" href="https://auth0.com/docs/hrd#3"><?php echo __( 'More info', 'wp-auth0' ); ?></a></span>
+    <span class="description"><?php echo __( 'This should be a valid JS to customize the Auth0 login widget to, for example, add custom buttons. ', WPA0_LANG ); ?><a target="_blank" href="https://auth0.com/docs/hrd#3"><?php echo __( 'More info', WPA0_LANG ); ?></a></span>
 </p>

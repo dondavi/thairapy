@@ -49,12 +49,21 @@ class wordfenceHash {
 
 		$this->startTime = microtime(true);
 
-		$options = $this->engine->scanController()->scanOptions();
-		if ($options['scansEnabled_core']) { $this->coreEnabled = true; }
-		if ($options['scansEnabled_plugins']) { $this->pluginsEnabled = true; }
-		if ($options['scansEnabled_themes']) { $this->themesEnabled = true; }
-		if ($options['scansEnabled_malware']) { $this->malwareEnabled = true; }
-		if ($options['scansEnabled_coreUnknown']) { $this->coreUnknownEnabled = true; }
+		if(wfConfig::get('scansEnabled_core')){
+			$this->coreEnabled = true;
+		}
+		if(wfConfig::get('scansEnabled_plugins')){
+			$this->pluginsEnabled = true;
+		}
+		if(wfConfig::get('scansEnabled_themes')){
+			$this->themesEnabled = true;
+		}
+		if(wfConfig::get('scansEnabled_malware')){
+			$this->malwareEnabled = true;
+		}
+		if(wfConfig::get('scansEnabled_coreUnknown')){
+			$this->coreUnknownEnabled = true;
+		}
 
 		$this->db = new wfDB();
 
@@ -113,14 +122,11 @@ class wordfenceHash {
 			'plugins' => wfIssues::STATUS_SECURE,
 			'malware' => wfIssues::STATUS_SECURE,
 			);
-		if($this->coreEnabled){ $this->status['core'] = wfIssues::statusStart("Comparing core WordPress files against originals in repository"); $this->engine->scanController()->startStage(wfScanner::STAGE_FILE_CHANGES); } else { wfIssues::statusDisabled("Skipping core scan"); }
-		if($this->themesEnabled){ $this->status['themes'] = wfIssues::statusStart("Comparing open source themes against WordPress.org originals"); $this->engine->scanController()->startStage(wfScanner::STAGE_FILE_CHANGES); } else { wfIssues::statusDisabled("Skipping theme scan"); }
-		if($this->pluginsEnabled){ $this->status['plugins'] = wfIssues::statusStart("Comparing plugins against WordPress.org originals"); $this->engine->scanController()->startStage(wfScanner::STAGE_FILE_CHANGES); } else { wfIssues::statusDisabled("Skipping plugin scan"); }
-		if($this->malwareEnabled){ $this->status['malware'] = wfIssues::statusStart("Scanning for known malware files"); $this->engine->scanController()->startStage(wfScanner::STAGE_MALWARE_SCAN); } else { wfIssues::statusDisabled("Skipping malware scan"); }
-		if($this->coreUnknownEnabled){ $this->status['coreUnknown'] = wfIssues::statusStart("Scanning for unknown files in wp-admin and wp-includes"); $this->engine->scanController()->startStage(wfScanner::STAGE_FILE_CHANGES); } else { wfIssues::statusDisabled("Skipping unknown core file scan"); }
-		
-		if ($options['scansEnabled_fileContents']) { $this->engine->scanController()->startStage(wfScanner::STAGE_MALWARE_SCAN); }
-		if ($options['scansEnabled_fileContentsGSB']) { $this->engine->scanController()->startStage(wfScanner::STAGE_CONTENT_SAFETY); }
+		if($this->coreEnabled){ $this->status['core'] = wfIssues::statusStart("Comparing core WordPress files against originals in repository"); } else { wfIssues::statusDisabled("Skipping core scan"); }
+		if($this->themesEnabled){ $this->status['themes'] = wfIssues::statusStart("Comparing open source themes against WordPress.org originals"); } else { wfIssues::statusDisabled("Skipping theme scan"); }
+		if($this->pluginsEnabled){ $this->status['plugins'] = wfIssues::statusStart("Comparing plugins against WordPress.org originals"); } else { wfIssues::statusDisabled("Skipping plugin scan"); }
+		if($this->malwareEnabled){ $this->status['malware'] = wfIssues::statusStart("Scanning for known malware files"); } else { wfIssues::statusDisabled("Skipping malware scan"); }
+		if($this->coreUnknownEnabled){ $this->status['coreUnknown'] = wfIssues::statusStart("Scanning for unknown files in wp-admin and wp-includes"); } else { wfIssues::statusDisabled("Skipping unknown core file scan"); }
 		
 		if ($this->coreUnknownEnabled && !$this->alertedOnUnknownWordPressVersion && empty($this->knownFiles['core'])) {
 			require(ABSPATH . 'wp-includes/version.php'); //defines $wp_version
@@ -198,10 +204,10 @@ class wordfenceHash {
 		$this->_processPendingIssues();
 		
 		wordfence::status(2, 'info', "Analyzed " . $this->totalFiles . " files containing " . wfUtils::formatBytes($this->totalData) . " of data.");
-		if($this->coreEnabled){ wfIssues::statusEnd($this->status['core'], $this->haveIssues['core']); $this->engine->scanController()->completeStage(wfScanner::STAGE_FILE_CHANGES, $this->haveIssues['core']); }
-		if($this->themesEnabled){ wfIssues::statusEnd($this->status['themes'], $this->haveIssues['themes']); $this->engine->scanController()->completeStage(wfScanner::STAGE_FILE_CHANGES, $this->haveIssues['themes']); }
-		if($this->pluginsEnabled){ wfIssues::statusEnd($this->status['plugins'], $this->haveIssues['plugins']); $this->engine->scanController()->completeStage(wfScanner::STAGE_FILE_CHANGES, $this->haveIssues['plugins']); }
-		if($this->coreUnknownEnabled){ wfIssues::statusEnd($this->status['coreUnknown'], $this->haveIssues['coreUnknown']); $this->engine->scanController()->completeStage(wfScanner::STAGE_FILE_CHANGES, $this->haveIssues['coreUnknown']); }
+		if($this->coreEnabled){ wfIssues::statusEnd($this->status['core'], $this->haveIssues['core']); }
+		if($this->themesEnabled){ wfIssues::statusEnd($this->status['themes'], $this->haveIssues['themes']); }
+		if($this->pluginsEnabled){ wfIssues::statusEnd($this->status['plugins'], $this->haveIssues['plugins']); }
+		if($this->coreUnknownEnabled){ wfIssues::statusEnd($this->status['coreUnknown'], $this->haveIssues['coreUnknown']); }
 		if(sizeof($this->possibleMalware) > 0){
 			$malwareResp = $engine->api->binCall('check_possible_malware', json_encode($this->possibleMalware));
 			if($malwareResp['code'] != 200){
@@ -235,7 +241,7 @@ class wordfenceHash {
 				}
 			}
 		}
-		if($this->malwareEnabled){ wfIssues::statusEnd($this->status['malware'], $this->haveIssues['malware']); $this->engine->scanController()->completeStage(wfScanner::STAGE_MALWARE_SCAN, $this->haveIssues['malware']); }
+		if($this->malwareEnabled){ wfIssues::statusEnd($this->status['malware'], $this->haveIssues['malware']); }
 		unset($this->knownFiles); $this->knownFiles = false;
 	}
 	private function _dirIndex($path, &$indexedFiles) {
@@ -400,8 +406,7 @@ class wordfenceHash {
 		}
 		
 		wfUtils::beginProcessingFile($file);
-		$wfHash = self::wfHash($realFile);
-		$this->engine->scanController()->incrementSummaryItem(wfScanner::SUMMARY_SCANNED_FILES);
+		$wfHash = self::wfHash($realFile); 
 		if($wfHash){
 			$md5 = strtoupper($wfHash[0]);
 			$shac = strtoupper($wfHash[1]);
@@ -458,9 +463,8 @@ class wordfenceHash {
 					{
 						if ($this->pluginsEnabled)
 						{
-							$options = $this->engine->scanController()->scanOptions();
 							$shouldGenerateIssue = true;
-							if (!$options['scansEnabled_highSense'] && preg_match('~/readme\.(?:txt|md)$~i', $file)) { //Don't generate issues for changed readme files unless high sensitivity is on
+							if (!wfConfig::get('scansEnabled_highSense') && preg_match('~/readme\.(?:txt|md)$~i', $file)) { //Don't generate issues for changed readme files unless high sensitivity is on
 								$shouldGenerateIssue = false;
 							}
 							
@@ -501,9 +505,8 @@ class wordfenceHash {
 					{
 						if ($this->themesEnabled)
 						{
-							$options = $this->engine->scanController()->scanOptions();
 							$shouldGenerateIssue = true;
-							if (!$options['scansEnabled_highSense'] && preg_match('~/readme\.(?:txt|md)$~i', $file)) { //Don't generate issues for changed readme files unless high sensitivity is on
+							if (!wfConfig::get('scansEnabled_highSense') && preg_match('~/readme\.(?:txt|md)$~i', $file)) { //Don't generate issues for changed readme files unless high sensitivity is on
 								$shouldGenerateIssue = false;
 							}
 							
@@ -697,24 +700,22 @@ class wordfenceHash {
 			$isJS = true;
 		}
 		
-		$options = $this->engine->scanController()->scanOptions();
-		
 		//If scan images is disabled, only allow .js through
 		if (!$isPHP && preg_match('/^(?:jpg|jpeg|mp3|avi|m4v|mov|mp4|gif|png|tiff?|svg|sql|js|tbz2?|bz2?|xz|zip|tgz|gz|tar|log|err\d+)$/', $fileExt)) {
-			if (!$options['scansEnabled_scanImages'] && !$isJS) {
+			if (!wfConfig::get('scansEnabled_scanImages') && !$isJS) {
 				return false;
 			}
 		}
 		
 		//If high sensitivity is disabled, don't allow .sql
 		if (strtolower($fileExt) == 'sql') {
-			if (!$options['scansEnabled_highSense']) {
+			if (!wfConfig::get('scansEnabled_highSense')) {
 				return false;
 			}
 		}
 		
 		//Treating as binary, return true
-		$treatAsBinary = ($isPHP || $isHTML || $options['scansEnabled_scanImages']);
+		$treatAsBinary = ($isPHP || $isHTML || wfConfig::get('scansEnabled_scanImages'));
 		if ($treatAsBinary) {
 			return true;
 		}
@@ -785,3 +786,4 @@ class wordfenceHash {
 		return false;
 	}
 }
+?>

@@ -28,6 +28,7 @@ class WP_Auth0_Admin_Advanced extends WP_Auth0_Admin_Generic {
       array( 'id' => 'wpa0_passwordless_method', 'name' => 'Use passwordless login', 'function' => 'render_passwordless_method' ),
 
       array( 'id' => 'wpa0_force_https_callback', 'name' => 'Force HTTPS callback', 'function' => 'render_force_https_callback' ),
+      array( 'id' => 'wpa0_use_lock_10', 'name' => 'Use Lock 10', 'function' => 'render_use_lock_10' ),
 
       array( 'id' => 'wpa0_cdn_url', 'name' => 'Widget URL', 'function' => 'render_cdn_url' ),
 
@@ -94,8 +95,8 @@ class WP_Auth0_Admin_Advanced extends WP_Auth0_Admin_Generic {
 
       <div class="subelement">
         <span class="description">
-          <?php echo __( 'For more info about the password policies check ', 'wp-auth0' ); ?>
-          <a target="_blank" href="https://auth0.com/docs/password-strength"><?php echo __( 'HERE', 'wp-auth0' ); ?></a>
+          <?php echo __( 'For more info about the password policies check ', WPA0_LANG ); ?>
+          <a target="_blank" href="https://auth0.com/docs/password-strength"><?php echo __( 'HERE', WPA0_LANG ); ?></a>
         </span>
       </div>
     <?php
@@ -107,7 +108,7 @@ class WP_Auth0_Admin_Advanced extends WP_Auth0_Admin_Generic {
     echo $this->render_a0_switch( "wpa0_jwt_auth_integration", "jwt_auth_integration", 1, 1 == $v );
 ?>
     <div class="subelement">
-      <span class="description"><?php echo __( 'This will enable the JWT Auth\'s Users Repository override.', 'wp-auth0' ); ?></span>
+      <span class="description"><?php echo __( 'This will enable the JWT Auth\'s Users Repository override.', WPA0_LANG ); ?></span>
     </div>
   <?php
   }
@@ -117,7 +118,7 @@ class WP_Auth0_Admin_Advanced extends WP_Auth0_Admin_Generic {
 ?>
       <input type="text" name="<?php echo $this->options->get_options_name(); ?>[default_login_redirection]" id="wpa0_default_login_redirection" value="<?php echo esc_attr( $v ); ?>"/>
       <div class="subelement">
-        <span class="description"><?php echo __( 'This is the URL that all users will be redirected to by default after login.', 'wp-auth0' ); ?></span>
+        <span class="description"><?php echo __( 'This is the URL that all users will be redirected to by default after login.', WPA0_LANG ); ?></span>
       </div>
     <?php
   }
@@ -129,9 +130,9 @@ class WP_Auth0_Admin_Advanced extends WP_Auth0_Admin_Generic {
     <textarea name="<?php echo $this->options->get_options_name(); ?>[extra_conf]" id="wpa0_extra_conf"><?php echo esc_attr( $v ); ?></textarea>
     <div class="subelement">
       <span class="description">
-        <?php echo __( 'This field is the Json that describes the options to call Lock with. It\'ll override any other option set here. See all the possible options ', 'wp-auth0' ); ?>
-        <a target="_blank" href="https://auth0.com/docs/libraries/lock/customization"><?php echo __( 'here', 'wp-auth0' ); ?></a>
-        <?php echo __( '(For example: {"disableResetAction": true }) ', 'wp-auth0' ); ?>
+        <?php echo __( 'This field is the Json that describes the options to call Lock with. It\'ll override any other option set here. See all the possible options ', WPA0_LANG ); ?>
+        <a target="_blank" href="https://auth0.com/docs/libraries/lock/customization"><?php echo __( 'here', WPA0_LANG ); ?></a>
+        <?php echo __( '(For example: {"disableResetAction": true }) ', WPA0_LANG ); ?>
       </span>
     </div>
     <?php
@@ -144,8 +145,8 @@ class WP_Auth0_Admin_Advanced extends WP_Auth0_Admin_Generic {
     <textarea name="<?php echo $this->options->get_options_name(); ?>[custom_signup_fields]" id="wpa0_custom_signup_fields"><?php echo esc_attr( $v ); ?></textarea>
     <div class="subelement">
       <span class="description">
-        <?php echo __( 'This field is the Json that describes the custom signup fields for lock. It should be a valida json and allows the use of functions (for validation). More info', 'wp-auth0' ); ?>
-        <a target="_blank" href="https://auth0.com/docs/libraries/lock/v10/new-features#custom-sign-up-fields"><?php echo __( 'here', 'wp-auth0' ); ?></a>
+        <?php echo __( 'This field is the Json that describes the custom signup fields for lock. It should be a valida json and allows the use of functions (for validation). More info', WPA0_LANG ); ?>
+        <a target="_blank" href="https://auth0.com/docs/libraries/lock/v10/new-features#custom-sign-up-fields"><?php echo __( 'here', WPA0_LANG ); ?></a>
 
         <code><pre>[
   {
@@ -173,7 +174,7 @@ class WP_Auth0_Admin_Advanced extends WP_Auth0_Admin_Generic {
     echo $this->render_a0_switch( "wpa0_link_auth0_users", "link_auth0_users", 1, ! empty( $v ) );
 ?>
       <div class="subelement">
-        <span class="description"><?php echo __( 'Links accounts with the same e-mail address. It will only occur if both e-mails are previously verified.', 'wp-auth0' ); ?></span>
+        <span class="description"><?php echo __( 'Links accounts with the same e-mail address. It will only occur if both e-mails are previously verified.', WPA0_LANG ); ?></span>
       </div>
     <?php
   }
@@ -185,7 +186,7 @@ class WP_Auth0_Admin_Advanced extends WP_Auth0_Admin_Generic {
 ?>
 
       <div class="subelement">
-        <span class="description"><?php echo __( 'The plugin will automatically add new users if they do not exist in the WordPress database if the signups are enabled (enabling this setting will enable this behaviour when signups are disabled).', 'wp-auth0' ); ?></span>
+        <span class="description"><?php echo __( 'The plugin will automatically add new users if they do not exist in the WordPress database if the signups are enabled (enabling this setting will enable this behaviour when signups are disabled).', WPA0_LANG ); ?></span>
         </div>
     <?php
   }
@@ -197,7 +198,7 @@ class WP_Auth0_Admin_Advanced extends WP_Auth0_Admin_Generic {
 ?>
 
       <div class="subelement">
-        <span class="description"><?php echo __( 'This option will replace the login widget with Lock Passwordless (Username and password login will not be enabled).', 'wp-auth0' ); ?></span>
+        <span class="description"><?php echo __( 'This option will replace the login widget by Lock Passwordles (Username and password login will not be enabled).', WPA0_LANG ); ?></span>
       </div>
     <?php
   }
@@ -209,7 +210,19 @@ class WP_Auth0_Admin_Advanced extends WP_Auth0_Admin_Generic {
 ?>
 
       <div class="subelement">
-        <span class="description"><?php echo __( 'This option forces the plugin to use HTTPS for the callback URL in those cases where it needs to support mixed HTTP and HTTPS pages. If disabled, it will pick the protocol from the WordPress home URL (configured under Settings > General).', 'wp-auth0' ); ?></span>
+        <span class="description"><?php echo __( 'This option forces the plugin to use HTTPS for the callback URL in those cases where it needs to support mixed HTTP and HTTPS pages. If disabled, it will pick the protocol from the WordPress home URL (configured under Settings > General).', WPA0_LANG ); ?></span>
+      </div>
+    <?php
+  }
+
+  public function render_use_lock_10() {
+    $v = $this->options->get( 'use_lock_10' );
+
+    echo $this->render_a0_switch( "wpa0_use_lock_10", "use_lock_10", 1, 1 == $v );
+?>
+
+      <div class="subelement">
+        <span class="description"><?php echo __( 'This option will use the latest version of lock. The lock API has changed on this version and can produce some incompatibilities with CSS or JS customizations you might made.', WPA0_LANG ); ?></span>
       </div>
     <?php
   }
@@ -221,7 +234,7 @@ class WP_Auth0_Admin_Advanced extends WP_Auth0_Admin_Generic {
 ?>
 
       <div class="subelement">
-        <span class="description"><?php echo __( 'Users session by default lives for two days. Enabling this setting will make the sessions be kept for 14 days.', 'wp-auth0' ); ?></span>
+        <span class="description"><?php echo __( 'Users session by default lives for two days. Enabling this setting will make the sessions be kept for 14 days.', WPA0_LANG ); ?></span>
       </div>
     <?php
   }
@@ -235,16 +248,16 @@ class WP_Auth0_Admin_Advanced extends WP_Auth0_Admin_Generic {
     if ( $v ) {
 ?>
       <div class="subelement">
-        <span class="description"><?php echo __( 'Users migration is enabled. If you disable this setting, it can not be automatically enabled again, it needs to be done manually in the Auth0 dashboard.', 'wp-auth0' ); ?></span>
+        <span class="description"><?php echo __( 'Users migration is enabled. If you disable this setting, it can not be automatically enabled again, it needs to be done manually in the Auth0 dashboard.', WPA0_LANG ); ?></span>
         <br>
-        <span class="description"><?php echo __( 'Security token:', 'wp-auth0' ); ?></span>
+        <span class="description"><?php echo __( 'Security token:', WPA0_LANG ); ?></span>
         <textarea class="code" disabled><?php echo $token; ?></textarea>
       </div>
     <?php
     } else {
 ?>
       <div class="subelement">
-        <span class="description"><?php echo __( 'Users migration is disabled. Enabling it will expose the migration webservices but the connection needs to be updated manually on the Auth0 dashboard. More info about the migration process ', 'wp-auth0' ); ?><a target="_blank" href="https://auth0.com/docs/connections/database/migrating">HERE</a>.</span>
+        <span class="description"><?php echo __( 'Users migration is disabled. Enabling it will expose the migration webservices but the connection needs to be updated manually on the Auth0 dashboard. More info about the migration process ', WPA0_LANG ); ?><a target="_blank" href="https://auth0.com/docs/connections/database/migrating">HERE</a>.</span>
       </div>
     <?php
     }
@@ -260,7 +273,7 @@ class WP_Auth0_Admin_Advanced extends WP_Auth0_Admin_Generic {
 ?>
       <div class="subelement">
         <textarea name="migration_ips_filter"><?php echo $list; ?></textarea>
-        <span class="description"><?php echo __( 'Only requests from this IPs will be allowed to the migration WS.', 'wp-auth0' ); ?></span>
+        <span class="description"><?php echo __( 'Only requests from this IPs will be allowed to the migration WS.', WPA0_LANG ); ?></span>
       </div>
     <?php
 
@@ -273,7 +286,7 @@ class WP_Auth0_Admin_Advanced extends WP_Auth0_Admin_Generic {
 ?>
 
     <div class="subelement">
-      <span class="description"><?php echo __( 'Activate this option to change the login workflow and allow the plugin to work when the server doesn\'t have internet access.', 'wp-auth0' ); ?></span>
+      <span class="description"><?php echo __( 'Activate this option to change the login workflow and allow the plugin to work when the server doesn\'t have internet access.', WPA0_LANG ); ?></span>
     </div>
     <?php
   }
@@ -285,7 +298,7 @@ class WP_Auth0_Admin_Advanced extends WP_Auth0_Admin_Generic {
 ?>
 
     <div class="subelement">
-      <span class="description"><?php echo __( 'Mark this to avoid the login page (you will have to select a single login provider)', 'wp-auth0' ); ?></span>
+      <span class="description"><?php echo __( 'Mark this to avoid the login page (you will have to select a single login provider)', WPA0_LANG ); ?></span>
     </div>
     <?php
   }
@@ -295,7 +308,7 @@ class WP_Auth0_Admin_Advanced extends WP_Auth0_Admin_Generic {
 ?>
     <input type="text" name="<?php echo $this->options->get_options_name(); ?>[auto_login_method]" id="wpa0_auto_login_method" value="<?php echo esc_attr( $v ); ?>"/>
     <div class="subelement">
-      <span class="description"><?php echo __( 'To find the method name, log into Auth0 Dashboard, and navigate to: Connection -> [Connection Type] (eg. Social or Enterprise). Click the "down arrow" to expand the wanted method, and use the value in the "Name"-field. Example: google-oauth2', 'wp-auth0' ); ?></span>
+      <span class="description"><?php echo __( 'To find the method name, log into Auth0 Dashboard, and navigate to: Connection -> [Connection Type] (eg. Social or Enterprise). Click the "down arrow" to expand the wanted method, and use the value in the "Name"-field. Example: google-oauth2', WPA0_LANG ); ?></span>
     </div>
     <?php
   }
@@ -311,7 +324,7 @@ class WP_Auth0_Admin_Advanced extends WP_Auth0_Admin_Generic {
 ?>
     <textarea cols="25" name="<?php echo $this->options->get_options_name(); ?>[ip_ranges]" id="wpa0_ip_ranges"><?php echo esc_textarea( $v ); ?></textarea>
     <div class="subelement">
-      <span class="description"><?php echo __( 'Only one range per line! Range format should be as follows (spaces will be trimmed):', 'wp-auth0' ); ?></span>
+      <span class="description"><?php echo __( 'Only one range per line! Range format should be as follows (spaces will be trimmed):', WPA0_LANG ); ?></span>
       <code>xx.xx.xx.xx - yy.yy.yy.yy</code>
     </div>
     <?php
@@ -348,7 +361,7 @@ class WP_Auth0_Admin_Advanced extends WP_Auth0_Admin_Generic {
 ?>
     <input type="text" name="<?php echo $this->options->get_options_name(); ?>[valid_proxy_ip]" id="wpa0_valid_proxy_ip" value="<?php echo esc_attr( $v ); ?>"/>
     <div class="subelement">
-      <span class="description"><?php echo __( ' If you are using a load balancer or a proxy, you will need to whitelist its IP in order to enable IP checks for logins or migration webservices.', 'wp-auth0' ); ?></span>
+      <span class="description"><?php echo __( ' If you are using a load balancer or a proxy, you will need to whitelist its IP in order to enable IP checks for logins or migration webservices.', WPA0_LANG ); ?></span>
     </div>
     <?php
   }
@@ -363,7 +376,7 @@ class WP_Auth0_Admin_Advanced extends WP_Auth0_Admin_Generic {
       <input type="text" name="<?php echo $this->options->get_options_name(); ?>[wpa0_passwordless_cdn_url]" id="wpa0_passwordless_cdn_url" value="<?php echo esc_attr( $passwordless_cdn_url ); ?>" style="<?php echo $passwordless_enabled ? '' : 'display:none' ?>"/>
 
       <div class="subelement">
-        <span class="description"><?php echo __( 'Point this to the latest widget available in the CDN', 'wp-auth0' ); ?></span>
+        <span class="description"><?php echo __( 'Point this to the latest widget available in the CDN', WPA0_LANG ); ?></span>
       </div>
     <?php
   }
@@ -374,7 +387,7 @@ class WP_Auth0_Admin_Advanced extends WP_Auth0_Admin_Generic {
       <input type="text" name="<?php echo $this->options->get_options_name(); ?>[auth0_server_domain]" id="wpa0_auth0_server_domain" value="<?php echo esc_attr( $v ); ?>" />
 
       <div class="subelement">
-        <span class="description"><?php echo __( 'The Auth0 domain, it is used by the setup wizard to fetch your account information.', 'wp-auth0' ); ?></span>
+        <span class="description"><?php echo __( 'The Auth0 domain, it is used by the setup wizard to fetch your account information.', WPA0_LANG ); ?></span>
       </div>
     <?php
   }
@@ -385,7 +398,7 @@ class WP_Auth0_Admin_Advanced extends WP_Auth0_Admin_Generic {
       <input type="text" name="<?php echo $this->options->get_options_name(); ?>[lock_connections]" id="wpa0_connections" value="<?php echo esc_attr( $v ); ?>" />
 
       <div class="subelement">
-        <span class="description"><?php echo __( 'This is used to select which connections should lock show. It is ignored when empty and is mandatory for passwordless with social mode.', 'wp-auth0' ); ?></span>
+        <span class="description"><?php echo __( 'This is used to select which connections should lock show. It is ignored when empty and is mandatory for passwordless with social mode.', WPA0_LANG ); ?></span>
       </div>
     <?php
   }
@@ -398,7 +411,7 @@ class WP_Auth0_Admin_Advanced extends WP_Auth0_Admin_Generic {
 
       <div class="subelement">
         <span class="description">
-          <?php echo __( 'This plugin tracks anonymous usage data. Click to disable.', 'wp-auth0' ); ?>
+          <?php echo __( 'This plugin tracks anonymous usage data. Click to disable.', WPA0_LANG ); ?>
         </span>
       </div>
     <?php
@@ -410,7 +423,7 @@ class WP_Auth0_Admin_Advanced extends WP_Auth0_Admin_Generic {
     echo $this->render_a0_switch( "wpa0_verified_email", "requires_verified_email", 1, 1 == $v );
 ?>
       <div class="subelement">
-        <span class="description"><?php echo __( 'Mark this if you require the user to have a verified email to login', 'wp-auth0' ); ?></span>
+        <span class="description"><?php echo __( 'Mark this if you require the user to have a verified email to login', WPA0_LANG ); ?></span>
       </div>
     <?php
   }
@@ -431,6 +444,7 @@ class WP_Auth0_Admin_Advanced extends WP_Auth0_Admin_Generic {
     $input['jwt_auth_integration'] = ( isset( $input['jwt_auth_integration'] ) ? $input['jwt_auth_integration'] : 0 );
     $input['auth0_implicit_workflow'] = ( isset( $input['auth0_implicit_workflow'] ) ? $input['auth0_implicit_workflow'] : 0 );
     $input['metrics'] = ( isset( $input['metrics'] ) ? $input['metrics'] : 0 );
+    $input['use_lock_10'] = ( isset( $input['use_lock_10'] ) ? $input['use_lock_10'] : 0 );
     $input['force_https_callback'] = ( isset( $input['force_https_callback'] ) ? $input['force_https_callback'] : 0 );
     $input['default_login_redirection'] = esc_url_raw( $input['default_login_redirection'] );
 
@@ -450,13 +464,13 @@ class WP_Auth0_Admin_Advanced extends WP_Auth0_Admin_Generic {
     $input['custom_signup_fields'] = trim( $input['custom_signup_fields'] );
 
     if ( $input['passwordless_enabled'] && empty( $input['lock_connections'] ) && strpos( strtolower( $input['passwordless_method'] ), 'social' ) !== false ) {
-      $error = __( "Please complete the list of connections to be used by Lock in social mode.", "wp-auth0" );
+      $error = __( "Please complete the list of connections to be used by Lock in social mode.", WPA0_LANG );
       self::add_validation_error( $error );
     }
 
     if ( trim( $input["extra_conf"] ) != '' ) {
       if ( json_decode( $input["extra_conf"] ) === null ) {
-        $error = __( "The Extra settings parameter should be a valid json object", "wp-auth0" );
+        $error = __( "The Extra settings parameter should be a valid json object", WPA0_LANG );
         self::add_validation_error( $error );
       }
     }
@@ -471,11 +485,12 @@ class WP_Auth0_Admin_Advanced extends WP_Auth0_Admin_Generic {
 
       if ( 1 == $input['migration_ws'] ) {
         $secret = $input['client_secret_b64_encoded'] ? JWT::urlsafeB64Decode( $secret) : $input['client_secret'];
+        $token_id = uniqid();
         $input['migration_token'] = JWT::encode( array( 'scope' => 'migration_ws', 'jti' => $token_id ), $secret );
         $input['migration_token_id'] = $token_id;
 
         // if ($response === false) {
-        $error = __( 'There was an error enabling your custom database. Check how to do it manually ', 'wp-auth0' );
+        $error = __( 'There was an error enabling your custom database. Check how to do it manually ', WPA0_LANG );
         $error .= '<a href="https://manage.auth0.com/#/connections/database">HERE</a>.';
         $this->add_validation_error( $error );
         // }
@@ -503,7 +518,7 @@ class WP_Auth0_Admin_Advanced extends WP_Auth0_Admin_Generic {
         }
 
         if ( $response === false ) {
-          $error = __( 'There was an error disabling your custom database. Check how to do it manually ', 'wp-auth0' );
+          $error = __( 'There was an error disabling your custom database. Check how to do it manually ', WPA0_LANG );
           $error .= '<a href="https://manage.auth0.com/#/connections/database">HERE</a>.';
           $this->add_validation_error( $error );
         }
@@ -573,7 +588,7 @@ class WP_Auth0_Admin_Advanced extends WP_Auth0_Admin_Generic {
       $matching = array_intersect($enabled_connections, $check_if_enabled);
 
       if (array_diff($matching, $check_if_enabled) !== array_diff($check_if_enabled, $matching)) {
-        $error = __( 'The passwordless connection is not enabled. Please go to the Auth0 Dashboard and configure it.', 'wp-auth0' );
+        $error = __( 'The passwordless connection is not enabled. Please go to the Auth0 Dashboard and configure it.', WPA0_LANG );
         $this->add_validation_error( $error );
       }
 
@@ -591,7 +606,7 @@ class WP_Auth0_Admin_Advanced extends WP_Auth0_Admin_Generic {
       if ( strpos( $input['default_login_redirection'], $home_url ) !== 0 ) {
         if ( strpos( $input['default_login_redirection'], 'http' ) === 0 ) {
           $input['default_login_redirection'] = $home_url;
-          $error = __( "The 'Login redirect URL' cannot point to a foreign page.", "wp-auth0" );
+          $error = __( "The 'Login redirect URL' cannot point to a foreign page.", WPA0_LANG );
           $this->add_validation_error( $error );
         }
       }
@@ -599,7 +614,7 @@ class WP_Auth0_Admin_Advanced extends WP_Auth0_Admin_Generic {
       if ( strpos( $input['default_login_redirection'], 'action=logout' ) !== false ) {
         $input['default_login_redirection'] = $home_url;
 
-        $error = __( "The 'Login redirect URL' cannot point to the logout page. ", "wp-auth0" );
+        $error = __( "The 'Login redirect URL' cannot point to the logout page. ", WPA0_LANG );
         $this->add_validation_error( $error );
       }
     }

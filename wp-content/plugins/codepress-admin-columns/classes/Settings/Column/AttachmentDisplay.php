@@ -19,10 +19,8 @@ class AC_Settings_Column_AttachmentDisplay extends AC_Settings_Column
 		$settings = array();
 
 		switch ( $this->get_attachment_display() ) {
-			case 'thumbnail' :
+			case 'thumbnail':
 				$settings[] = new AC_Settings_Column_Images( $this->column );
-
-				break;
 		}
 
 		return $settings;

@@ -33,38 +33,39 @@ return array(
 				'description' => __( 'In milliseconds', 'codelights-shortcodes-and-widgets' ),
 				'type' => 'textfield',
 				'std' => '3000',
-				'group' => __( 'Style', 'codelights-shortcodes-and-widgets' ),
+				'group' => __( 'Custom', 'codelights-shortcodes-and-widgets' ),
 			),
 			'value_size' => array(
 				'title' => __( 'Value Font Size', 'codelights-shortcodes-and-widgets' ),
 				'type' => 'textfield',
 				'std' => '50',
 				'classes' => 'cl_col-sm-6 cl_column',
-				'group' => __( 'Style', 'codelights-shortcodes-and-widgets' ),
+				'group' => __( 'Custom', 'codelights-shortcodes-and-widgets' ),
 			),
 			'title_size' => array(
 				'title' => __( 'Title Font Size', 'codelights-shortcodes-and-widgets' ),
 				'type' => 'textfield',
 				'std' => '20',
 				'classes' => 'cl_col-sm-6 cl_column',
-				'group' => __( 'Style', 'codelights-shortcodes-and-widgets' ),
+				'group' => __( 'Custom', 'codelights-shortcodes-and-widgets' ),
 			),
 			'value_color' => array(
 				'title' => __( 'Value Color', 'codelights-shortcodes-and-widgets' ),
 				'type' => 'color',
 				'classes' => 'cl_col-sm-6 cl_column',
-				'group' => __( 'Style', 'codelights-shortcodes-and-widgets' ),
+				'group' => __( 'Custom', 'codelights-shortcodes-and-widgets' ),
 			),
 			'title_color' => array(
 				'title' => __( 'Title Color', 'codelights-shortcodes-and-widgets' ),
 				'type' => 'color',
 				'classes' => 'cl_col-sm-6 cl_column',
-				'group' => __( 'Style', 'codelights-shortcodes-and-widgets' ),
+				'group' => __( 'Custom', 'codelights-shortcodes-and-widgets' ),
 			),
 			'el_class' => array(
-				'title' => __( 'Extra CSS class', 'codelights-shortcodes-and-widgets' ),
+				'title' => __( 'Extra class name', 'codelights-shortcodes-and-widgets' ),
+				'description' => __( 'If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.', 'codelights-shortcodes-and-widgets' ),
 				'type' => 'textfield',
-				'group' => __( 'Style', 'codelights-shortcodes-and-widgets' ),
+				'group' => __( 'Custom', 'codelights-shortcodes-and-widgets' ),
 			),
 		),
 	),
@@ -82,9 +83,9 @@ return array(
 				'title' => __( 'Link', 'codelights-shortcodes-and-widgets' ),
 				'type' => 'select',
 				'options' => array(
-					'none' => __( 'None', 'codelights-shortcodes-and-widgets' ),
+					'none' => __( 'No Link', 'codelights-shortcodes-and-widgets' ),
 					'container' => __( 'Add link to the whole FlipBox', 'codelights-shortcodes-and-widgets' ),
-					'btn' => __( 'Add link as a button on the Back Side', 'codelights-shortcodes-and-widgets' ),
+					'btn' => __( 'Add link as a separate button', 'codelights-shortcodes-and-widgets' ),
 				),
 				'std' => 'none',
 			),
@@ -161,18 +162,18 @@ return array(
 			 * Front Side
 			 */
 			'front_icon_type' => array(
-				'title' => __( 'Icon', 'codelights-shortcodes-and-widgets' ),
+				'title' => __( 'Icon to Display', 'codelights-shortcodes-and-widgets' ),
 				'type' => 'select',
 				'options' => array(
 					'none' => __( 'None', 'codelights-shortcodes-and-widgets' ),
-					'font' => sprintf( __( '%s icon', 'codelights-shortcodes-and-widgets' ), 'Font Awesome' ),
+					'font' => __( 'FontAwesome Icon', 'codelights-shortcodes-and-widgets' ),
 					'image' => __( 'Custom Image', 'codelights-shortcodes-and-widgets' ),
 				),
 				'group' => __( 'Front Side', 'codelights-shortcodes-and-widgets' ),
 			),
 			'front_icon_name' => array(
 				'title' => __( 'Icon Name', 'codelights-shortcodes-and-widgets' ),
-				'description' => sprintf( __( '%s icon', 'codelights-shortcodes-and-widgets' ), '<a href="http://fontawesome.io/icons/" target="_blank">Font Awesome</a>' ),
+				'description' => sprintf( __( '<a href="%s" target="_blank">FontAwesome</a> icon', 'codelights-shortcodes-and-widgets' ), 'http://fontawesome.io/icons/' ),
 				'type' => 'textfield',
 				'group' => __( 'Front Side', 'codelights-shortcodes-and-widgets' ),
 				'show_if' => array( 'front_icon_type', '=', 'font' ),
@@ -214,7 +215,6 @@ return array(
 			'front_icon_image' => array(
 				'title' => __( 'Image', 'codelights-shortcodes-and-widgets' ),
 				'type' => 'image',
-				'classes' => 'cl_col-sm-6 cl_column',
 				'group' => __( 'Front Side', 'codelights-shortcodes-and-widgets' ),
 				'show_if' => array( 'front_icon_type', '=', 'image' ),
 			),
@@ -223,7 +223,6 @@ return array(
 				'description' => __( 'In pixels or percents', 'codelights-shortcodes-and-widgets' ),
 				'type' => 'textfield',
 				'std' => '32px',
-				'classes' => 'cl_col-sm-6 cl_column',
 				'group' => __( 'Front Side', 'codelights-shortcodes-and-widgets' ),
 				'show_if' => array( 'front_icon_type', '=', 'image' ),
 			),
@@ -236,7 +235,7 @@ return array(
 				'group' => __( 'Front Side', 'codelights-shortcodes-and-widgets' ),
 			),
 			'front_title_size' => array(
-				'title' => __( 'Title Size', 'codelights-shortcodes-and-widgets' ),
+				'title' => __( 'Title Font Size', 'codelights-shortcodes-and-widgets' ),
 				'type' => 'textfield',
 				'std' => '',
 				'classes' => 'cl_col-sm-6 cl_column',
@@ -251,9 +250,9 @@ return array(
 				'title' => __( 'Elements Order', 'codelights-shortcodes-and-widgets' ),
 				'type' => 'select',
 				'options' => array(
-					'itd' => __( 'Icon', 'codelights-shortcodes-and-widgets' ) . ', ' . __( 'Title', 'codelights-shortcodes-and-widgets' ) . ', ' . __( 'Description', 'codelights-shortcodes-and-widgets' ),
-					'tid' => __( 'Title', 'codelights-shortcodes-and-widgets' ) . ', ' . __( 'Icon', 'codelights-shortcodes-and-widgets' ) . ', ' . __( 'Description', 'codelights-shortcodes-and-widgets' ),
-					'tdi' => __( 'Title', 'codelights-shortcodes-and-widgets' ) . ', ' . __( 'Description', 'codelights-shortcodes-and-widgets' ) . ', ' . __( 'Icon', 'codelights-shortcodes-and-widgets' ),
+					'itd' => __( 'Icon', 'codelights-shortcodes-and-widgets' ) . ' / ' . __( 'Title', 'codelights-shortcodes-and-widgets' ) . ' / ' . __( 'Description', 'codelights-shortcodes-and-widgets' ),
+					'tid' => __( 'Title', 'codelights-shortcodes-and-widgets' ) . ' / ' . __( 'Icon', 'codelights-shortcodes-and-widgets' ) . ' / ' . __( 'Description', 'codelights-shortcodes-and-widgets' ),
+					'tdi' => __( 'Title', 'codelights-shortcodes-and-widgets' ) . ' / ' . __( 'Description', 'codelights-shortcodes-and-widgets' ) . ' / ' . __( 'Icon', 'codelights-shortcodes-and-widgets' ),
 				),
 				'group' => __( 'Front Side', 'codelights-shortcodes-and-widgets' ),
 			),
@@ -292,7 +291,7 @@ return array(
 				'group' => __( 'Back Side', 'codelights-shortcodes-and-widgets' ),
 			),
 			'back_title_size' => array(
-				'title' => __( 'Title Size', 'codelights-shortcodes-and-widgets' ),
+				'title' => __( 'Title Font Size', 'codelights-shortcodes-and-widgets' ),
 				'type' => 'textfield',
 				'std' => '',
 				'classes' => 'cl_col-sm-6 cl_column',
@@ -307,9 +306,9 @@ return array(
 				'title' => __( 'Elements Order', 'codelights-shortcodes-and-widgets' ),
 				'type' => 'select',
 				'options' => array(
-					'tdb' => __( 'Title', 'codelights-shortcodes-and-widgets' ) . ', ' . __( 'Description', 'codelights-shortcodes-and-widgets' ) . ', ' . __( 'Button (if set)', 'codelights-shortcodes-and-widgets' ),
-					'tbd' => __( 'Title', 'codelights-shortcodes-and-widgets' ) . ', ' . __( 'Button (if set)', 'codelights-shortcodes-and-widgets' ) . ', ' . __( 'Description', 'codelights-shortcodes-and-widgets' ),
-					'btd' => __( 'Button (if set)', 'codelights-shortcodes-and-widgets' ) . ', ' . __( 'Title', 'codelights-shortcodes-and-widgets' ) . ', ' . __( 'Description', 'codelights-shortcodes-and-widgets' ),
+					'tdb' => __( 'Title', 'codelights-shortcodes-and-widgets' ) . ' / ' . __( 'Description', 'codelights-shortcodes-and-widgets' ) . ' / ' . __( 'Button (if exists)', 'codelights-shortcodes-and-widgets' ),
+					'tbd' => __( 'Title', 'codelights-shortcodes-and-widgets' ) . ' / ' . __( 'Button (if exists)', 'codelights-shortcodes-and-widgets' ) . ' / ' . __( 'Description', 'codelights-shortcodes-and-widgets' ),
+					'btd' => __( 'Button (if exists)', 'codelights-shortcodes-and-widgets' ) . ' / ' . __( 'Title', 'codelights-shortcodes-and-widgets' ) . ' / ' . __( 'Description', 'codelights-shortcodes-and-widgets' ),
 				),
 				'group' => __( 'Back Side', 'codelights-shortcodes-and-widgets' ),
 			),
@@ -338,7 +337,7 @@ return array(
 				'group' => __( 'Back Side', 'codelights-shortcodes-and-widgets' ),
 			),
 			/**
-			 * Style
+			 * Custom
 			 */
 			'width' => array(
 				'title' => __( 'Width', 'codelights-shortcodes-and-widgets' ),
@@ -346,7 +345,7 @@ return array(
 				'type' => 'textfield',
 				'std' => '100%',
 				'classes' => 'cl_col-sm-6 cl_column',
-				'group' => __( 'Style', 'codelights-shortcodes-and-widgets' ),
+				'group' => __( 'Custom', 'codelights-shortcodes-and-widgets' ),
 			),
 			'height' => array(
 				'title' => __( 'Height', 'codelights-shortcodes-and-widgets' ),
@@ -354,35 +353,35 @@ return array(
 				'type' => 'textfield',
 				'std' => '',
 				'classes' => 'cl_col-sm-6 cl_column',
-				'group' => __( 'Style', 'codelights-shortcodes-and-widgets' ),
+				'group' => __( 'Custom', 'codelights-shortcodes-and-widgets' ),
 			),
 			'valign' => array(
 				'type' => 'checkboxes',
 				'options' => array(
-					'center' => __( 'Center the content vertically', 'codelights-shortcodes-and-widgets' ),
+					'center' => __( 'Center-Align Content Vertically', 'codelights-shortcodes-and-widgets' ),
 				),
 				'std' => 'top',
-				'group' => __( 'Style', 'codelights-shortcodes-and-widgets' ),
+				'group' => __( 'Custom', 'codelights-shortcodes-and-widgets' ),
 			),
 			'border_radius' => array(
-				'title' => __( 'Corners Radius', 'codelights-shortcodes-and-widgets' ),
+				'title' => __( 'Border Radius', 'codelights-shortcodes-and-widgets' ),
 				'type' => 'textfield',
 				'std' => '0',
 				'classes' => 'cl_col-sm-6 cl_column',
-				'group' => __( 'Style', 'codelights-shortcodes-and-widgets' ),
+				'group' => __( 'Custom', 'codelights-shortcodes-and-widgets' ),
 			),
 			'border_size' => array(
 				'title' => __( 'Border Width', 'codelights-shortcodes-and-widgets' ),
 				'type' => 'textfield',
 				'std' => '0',
 				'classes' => 'cl_col-sm-6 cl_column',
-				'group' => __( 'Style', 'codelights-shortcodes-and-widgets' ),
+				'group' => __( 'Custom', 'codelights-shortcodes-and-widgets' ),
 			),
 			'border_color' => array(
 				'title' => __( 'Border Color', 'codelights-shortcodes-and-widgets' ),
 				'type' => 'color',
 				'classes' => 'cl_col-sm-6 cl_column',
-				'group' => __( 'Style', 'codelights-shortcodes-and-widgets' ),
+				'group' => __( 'Custom', 'codelights-shortcodes-and-widgets' ),
 			),
 			'padding' => array(
 				'title' => __( 'Padding', 'codelights-shortcodes-and-widgets' ),
@@ -390,12 +389,13 @@ return array(
 				'type' => 'textfield',
 				'std' => '15%',
 				'classes' => 'cl_col-sm-6 cl_column',
-				'group' => __( 'Style', 'codelights-shortcodes-and-widgets' ),
+				'group' => __( 'Custom', 'codelights-shortcodes-and-widgets' ),
 			),
 			'el_class' => array(
-				'title' => __( 'Extra CSS class', 'codelights-shortcodes-and-widgets' ),
+				'title' => __( 'Extra class name', 'codelights-shortcodes-and-widgets' ),
+				'description' => __( 'If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.', 'codelights-shortcodes-and-widgets' ),
 				'type' => 'textfield',
-				'group' => __( 'Style', 'codelights-shortcodes-and-widgets' ),
+				'group' => __( 'Custom', 'codelights-shortcodes-and-widgets' ),
 			),
 		),
 	),
@@ -410,7 +410,7 @@ return array(
 			 * Content
 			 */
 			'image' => array(
-				'title' => __( 'Image', 'codelights-shortcodes-and-widgets' ),
+				'title' => __( 'Banner Image', 'codelights-shortcodes-and-widgets' ),
 				'type' => 'image',
 				'classes' => 'cl_col-sm-6 cl_column',
 			),
@@ -524,7 +524,8 @@ return array(
 				'group' => __( 'Style', 'codelights-shortcodes-and-widgets' ),
 			),
 			'el_class' => array(
-				'title' => __( 'Extra CSS class', 'codelights-shortcodes-and-widgets' ),
+				'title' => __( 'Extra class name', 'codelights-shortcodes-and-widgets' ),
+				'description' => __( 'If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.', 'codelights-shortcodes-and-widgets' ),
 				'type' => 'textfield',
 				'group' => __( 'Style', 'codelights-shortcodes-and-widgets' ),
 			),
@@ -532,23 +533,40 @@ return array(
 			 * Typography
 			 */
 			'title_size' => array(
-				'title' => __( 'Title Size', 'codelights-shortcodes-and-widgets' ),
+				'title' => __( 'Title Font Size', 'codelights-shortcodes-and-widgets' ),
 				'description' => '',
 				'type' => 'textfield',
 				'std' => '30px',
 				'classes' => 'cl_col-sm-6 cl_column',
 				'group' => __( 'Typography', 'codelights-shortcodes-and-widgets' ),
 			),
+			'desc_size' => array(
+				'title' => __( 'Description Font Size', 'codelights-shortcodes-and-widgets' ),
+				'description' => '',
+				'type' => 'textfield',
+				'std' => '16px',
+				'classes' => 'cl_col-sm-6 cl_column',
+				'group' => __( 'Typography', 'codelights-shortcodes-and-widgets' ),
+			),
 			'title_mobile_size' => array(
-				'title' => __( 'Title Size for Mobiles', 'codelights-shortcodes-and-widgets' ),
-				'description' => __( 'Applied when the screen width is less than 600px', 'codelights-shortcodes-and-widgets' ),
+				'title' => __( 'Title Font Size for Mobiles', 'codelights-shortcodes-and-widgets' ),
+				'description' => __( 'This value will be applied when screen width is less than 600px', 'codelights-shortcodes-and-widgets' ),
 				'type' => 'textfield',
 				'std' => '24px',
 				'classes' => 'cl_col-sm-6 cl_column',
 				'group' => __( 'Typography', 'codelights-shortcodes-and-widgets' ),
 			),
+			'desc_mobile_size' => array(
+				'title' => __( 'Description Size for Mobiles', 'codelights-shortcodes-and-widgets' ),
+				'description' => __( 'This value will be applied when screen width is less than 600px', 'codelights-shortcodes-and-widgets' ),
+				'type' => 'textfield',
+				'std' => '16px',
+				'classes' => 'cl_col-sm-6 cl_column',
+				'group' => __( 'Typography', 'codelights-shortcodes-and-widgets' ),
+			),
 			'title_tag' => array(
 				'title' => __( 'Title Tag Name', 'codelights-shortcodes-and-widgets' ),
+				'description' => __( 'Used for SEO purposes', 'codelights-shortcodes-and-widgets' ),
 				'type' => 'select',
 				'options' => array(
 					'h1' => 'h1',
@@ -560,22 +578,6 @@ return array(
 					'div' => 'div',
 				),
 				'std' => 'h4',
-				'group' => __( 'Typography', 'codelights-shortcodes-and-widgets' ),
-			),
-			'desc_size' => array(
-				'title' => __( 'Description Size', 'codelights-shortcodes-and-widgets' ),
-				'description' => '',
-				'type' => 'textfield',
-				'std' => '',
-				'classes' => 'cl_col-sm-6 cl_column',
-				'group' => __( 'Typography', 'codelights-shortcodes-and-widgets' ),
-			),
-			'desc_mobile_size' => array(
-				'title' => __( 'Description Size for Mobiles', 'codelights-shortcodes-and-widgets' ),
-				'description' => __( 'Applied when the screen width is less than 600px', 'codelights-shortcodes-and-widgets' ),
-				'type' => 'textfield',
-				'std' => '',
-				'classes' => 'cl_col-sm-6 cl_column',
 				'group' => __( 'Typography', 'codelights-shortcodes-and-widgets' ),
 			),
 		),
@@ -616,52 +618,38 @@ return array(
 				),
 				'std' => 'fadeIn',
 			),
-			'duration' => array(
-				'title' => __( 'Animation Duration', 'codelights-shortcodes-and-widgets' ),
-				'description' => __( 'In milliseconds', 'codelights-shortcodes-and-widgets' ),
-				'type' => 'textfield',
-				'std' => '300',
-				'classes' => 'cl_col-sm-6 cl_column',
-			),
-			'delay' => array(
-				'title' => __( 'Animation Delay', 'codelights-shortcodes-and-widgets' ),
-				'description' => __( 'In seconds', 'codelights-shortcodes-and-widgets' ),
-				'type' => 'textfield',
-				'std' => '5',
-				'classes' => 'cl_col-sm-6 cl_column',
-			),
 			/**
-			 * Style
+			 * Custom
 			 */
 			'font_size' => array(
-				'title' => __( 'Text Size', 'codelights-shortcodes-and-widgets' ),
+				'title' => __( 'Font Size', 'codelights-shortcodes-and-widgets' ),
 				'type' => 'textfield',
 				'std' => '50px',
 				'classes' => 'cl_col-sm-6 cl_column',
-				'group' => __( 'Style', 'codelights-shortcodes-and-widgets' ),
+				'group' => __( 'Custom', 'codelights-shortcodes-and-widgets' ),
 			),
 			'font_size_mobile' => array(
-				'title' => __( 'Text Size for Mobiles', 'codelights-shortcodes-and-widgets' ),
-				'description' => __( 'Applied when the screen width is less than 600px', 'codelights-shortcodes-and-widgets' ),
+				'title' => __( 'Font Size for Mobiles', 'codelights-shortcodes-and-widgets' ),
+				'description' => __( 'This value will be applied when screen width is less than 600px', 'codelights-shortcodes-and-widgets' ),
 				'type' => 'textfield',
 				'std' => '30px',
 				'classes' => 'cl_col-sm-6 cl_column',
-				'group' => __( 'Style', 'codelights-shortcodes-and-widgets' ),
+				'group' => __( 'Custom', 'codelights-shortcodes-and-widgets' ),
 			),
 			'color' => array(
 				'title' => __( 'Basic Text Color', 'codelights-shortcodes-and-widgets' ),
 				'type' => 'color',
 				'classes' => 'cl_col-sm-6 cl_column',
-				'group' => __( 'Style', 'codelights-shortcodes-and-widgets' ),
+				'group' => __( 'Custom', 'codelights-shortcodes-and-widgets' ),
 			),
 			'dynamic_color' => array(
 				'title' => __( 'Dynamic Text Color', 'codelights-shortcodes-and-widgets' ),
 				'type' => 'color',
 				'classes' => 'cl_col-sm-6 cl_column',
-				'group' => __( 'Style', 'codelights-shortcodes-and-widgets' ),
+				'group' => __( 'Custom', 'codelights-shortcodes-and-widgets' ),
 			),
 			'align' => array(
-				'title' => __( 'Alignment', 'codelights-shortcodes-and-widgets' ),
+				'title' => __( 'Text Alignment', 'codelights-shortcodes-and-widgets' ),
 				'type' => 'select',
 				'options' => array(
 					'left' => __( 'Left', 'codelights-shortcodes-and-widgets' ),
@@ -670,7 +658,7 @@ return array(
 				),
 				'std' => 'center',
 				'classes' => 'cl_col-sm-6 cl_column',
-				'group' => __( 'Style', 'codelights-shortcodes-and-widgets' ),
+				'group' => __( 'Custom', 'codelights-shortcodes-and-widgets' ),
 			),
 			'tag' => array(
 				'title' => __( 'Tag Name', 'codelights-shortcodes-and-widgets' ),
@@ -687,12 +675,29 @@ return array(
 				),
 				'std' => 'h2',
 				'classes' => 'cl_col-sm-6 cl_column',
-				'group' => __( 'Style', 'codelights-shortcodes-and-widgets' ),
+				'group' => __( 'Custom', 'codelights-shortcodes-and-widgets' ),
+			),
+			'duration' => array(
+				'title' => __( 'Animation Duration', 'codelights-shortcodes-and-widgets' ),
+				'description' => __( 'In milliseconds', 'codelights-shortcodes-and-widgets' ),
+				'type' => 'textfield',
+				'std' => '300',
+				'classes' => 'cl_col-sm-6 cl_column',
+				'group' => __( 'Custom', 'codelights-shortcodes-and-widgets' ),
+			),
+			'delay' => array(
+				'title' => __( 'Animation Delay', 'codelights-shortcodes-and-widgets' ),
+				'description' => __( 'In seconds', 'codelights-shortcodes-and-widgets' ),
+				'type' => 'textfield',
+				'std' => '5',
+				'classes' => 'cl_col-sm-6 cl_column',
+				'group' => __( 'Custom', 'codelights-shortcodes-and-widgets' ),
 			),
 			'el_class' => array(
-				'title' => __( 'Extra CSS class', 'codelights-shortcodes-and-widgets' ),
+				'title' => __( 'Extra class name', 'codelights-shortcodes-and-widgets' ),
+				'description' => __( 'If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.', 'codelights-shortcodes-and-widgets' ),
 				'type' => 'textfield',
-				'group' => __( 'Style', 'codelights-shortcodes-and-widgets' ),
+				'group' => __( 'Custom', 'codelights-shortcodes-and-widgets' ),
 			),
 		),
 	),
@@ -726,7 +731,6 @@ return array(
 					'btn' => __( 'Button Click', 'codelights-shortcodes-and-widgets' ),
 					'text' => __( 'Text Click', 'codelights-shortcodes-and-widgets' ),
 					'image' => __( 'Image Click', 'codelights-shortcodes-and-widgets' ),
-					'selector' => __( 'Custom Element Click', 'codelights-shortcodes-and-widgets' ),
 					'load' => __( 'Page Load', 'codelights-shortcodes-and-widgets' ),
 				),
 				'std' => 'btn',
@@ -796,13 +800,6 @@ return array(
 				'show_if' => array( 'show_on', 'in', array( 'btn', 'image', 'text' ) ),
 				'group' => __( 'Trigger', 'codelights-shortcodes-and-widgets' ),
 			),
-			'trigger_selector' => array(
-				'title' => __( 'Custom Element CSS Selector', 'codelights-shortcodes-and-widgets' ),
-				'type' => 'textfield',
-				'std' => '.my-element',
-				'show_if' => array( 'show_on', '=', 'selector' ),
-				'group' => __( 'Trigger', 'codelights-shortcodes-and-widgets' ),
-			),
 			'show_delay' => array(
 				'title' => __( 'Popup Show Delay', 'codelights-shortcodes-and-widgets' ),
 				'description' => __( 'In seconds', 'codelights-shortcodes-and-widgets' ),
@@ -850,7 +847,7 @@ return array(
 				'group' => __( 'Style', 'codelights-shortcodes-and-widgets' ),
 			),
 			'border_radius' => array(
-				'title' => __( 'Corners Radius', 'codelights-shortcodes-and-widgets' ),
+				'title' => __( 'Border Radius', 'codelights-shortcodes-and-widgets' ),
 				'type' => 'textfield',
 				'std' => '0',
 				'classes' => 'cl_col-sm-6 cl_column',
@@ -864,14 +861,14 @@ return array(
 				'group' => __( 'Style', 'codelights-shortcodes-and-widgets' ),
 			),
 			'title_bgcolor' => array(
-				'title' => __( 'Title Background Color', 'codelights-shortcodes-and-widgets' ),
+				'title' => __( 'Header Background Color', 'codelights-shortcodes-and-widgets' ),
 				'type' => 'color',
 				'std' => '#f2f2f2',
 				'classes' => 'cl_col-sm-6 cl_column',
 				'group' => __( 'Style', 'codelights-shortcodes-and-widgets' ),
 			),
 			'title_textcolor' => array(
-				'title' => __( 'Title Text Color', 'codelights-shortcodes-and-widgets' ),
+				'title' => __( 'Header Text Color', 'codelights-shortcodes-and-widgets' ),
 				'type' => 'color',
 				'std' => '#666666',
 				'classes' => 'cl_col-sm-6 cl_column',
@@ -892,7 +889,8 @@ return array(
 				'group' => __( 'Style', 'codelights-shortcodes-and-widgets' ),
 			),
 			'el_class' => array(
-				'title' => __( 'Extra CSS class', 'codelights-shortcodes-and-widgets' ),
+				'title' => __( 'Extra class name', 'codelights-shortcodes-and-widgets' ),
+				'description' => __( 'If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.', 'codelights-shortcodes-and-widgets' ),
 				'type' => 'textfield',
 				'group' => __( 'Style', 'codelights-shortcodes-and-widgets' ),
 			),
@@ -909,7 +907,7 @@ return array(
 			 * General
 			 */
 			'quote' => array(
-				'title' => __( 'Testimonial Text', 'codelights-shortcodes-and-widgets' ),
+				'title' => __( 'Quote Text', 'codelights-shortcodes-and-widgets' ),
 				'type' => 'textarea',
 				'std' => 'This product is really awesome!',
 			),
@@ -936,10 +934,10 @@ return array(
 				'classes' => 'cl_col-sm-6 cl_column',
 			),
 			'type' => array(
-				'title' => __( 'Testimonial Type', 'codelights-shortcodes-and-widgets' ),
+				'title' => __( 'Review Type', 'codelights-shortcodes-and-widgets' ),
 				'type' => 'select',
 				'options' => array(
-					'quote' => __( 'Testimonial Text Only', 'codelights-shortcodes-and-widgets' ),
+					'quote' => __( 'Quote Text Only', 'codelights-shortcodes-and-widgets' ),
 					'doc' => __( 'With Scanned Document', 'codelights-shortcodes-and-widgets' ),
 					'video' => __( 'With Video', 'codelights-shortcodes-and-widgets' ),
 				),
@@ -950,13 +948,13 @@ return array(
 				'show_if' => array( 'type', '=', 'doc' ),
 			),
 			'video' => array(
-				'title' => __( 'Link to Video', 'codelights-shortcodes-and-widgets' ),
+				'title' => __( 'Video URL to Embed', 'codelights-shortcodes-and-widgets' ),
 				'type' => 'textfield',
 				'std' => 'https://vimeo.com/146383727',
 				'show_if' => array( 'type', '=', 'video' ),
 			),
 			'layout' => array(
-				'title' => __( 'Testimonial Style', 'codelights-shortcodes-and-widgets' ),
+				'title' => __( 'Quote Style', 'codelights-shortcodes-and-widgets' ),
 				'type' => 'select',
 				'options' => array(
 					'clean' => __( 'Clean', 'codelights-shortcodes-and-widgets' ),
@@ -980,7 +978,7 @@ return array(
 				'show_if' => array( 'layout', 'in', array( 'balloon', 'framed', 'modern' ) ),
 			),
 			'quote_size' => array(
-				'title' => __( 'Testimonial Text Size', 'codelights-shortcodes-and-widgets' ),
+				'title' => __( 'Quote Text Size', 'codelights-shortcodes-and-widgets' ),
 				'description' => '',
 				'type' => 'textfield',
 				'std' => '18px',
@@ -999,13 +997,14 @@ return array(
 				'title' => '',
 				'type' => 'checkboxes',
 				'options' => array(
-					TRUE => __( 'Make Testimonial Text italic', 'codelights-shortcodes-and-widgets' ),
+					TRUE => __( 'Make Quote Text italic', 'codelights-shortcodes-and-widgets' ),
 				),
 				'std' => TRUE,
 				'group' => __( 'Style', 'codelights-shortcodes-and-widgets' ),
 			),
 			'el_class' => array(
-				'title' => __( 'Extra CSS class', 'codelights-shortcodes-and-widgets' ),
+				'title' => __( 'Extra class name', 'codelights-shortcodes-and-widgets' ),
+				'description' => __( 'If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.', 'codelights-shortcodes-and-widgets' ),
 				'type' => 'textfield',
 				'group' => __( 'Style', 'codelights-shortcodes-and-widgets' ),
 			),

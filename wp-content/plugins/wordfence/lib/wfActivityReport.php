@@ -1,9 +1,6 @@
 <?php
 
 class wfActivityReport {
-	const BLOCK_TYPE_COMPLEX = 'complex';
-	const BLOCK_TYPE_BRUTE_FORCE = 'bruteforce';
-	const BLOCK_TYPE_BLACKLIST = 'blacklist';
 
 	/**
 	 * @var int
@@ -188,7 +185,7 @@ class wfActivityReport {
 		);
 	}
 	
-	public function getBlockedCount($maxAgeDays = null, $grouping = null) {
+	public function getBlockedCount($maxAgeDays = null) {
 		$maxAgeDays = (int) $maxAgeDays;
 		if ($maxAgeDays <= 0) {
 			$interval = 'FLOOR(UNIX_TIMESTAMP(DATE_SUB(NOW(), interval 7 day)) / 86400)';
@@ -205,24 +202,10 @@ class wfActivityReport {
 			$interval = 'FLOOR(UNIX_TIMESTAMP(DATE_SUB(NOW(), interval ' . $maxAgeDays . ' day)) / 86400)';
 		}
 		
-		//Possible values for blockType: throttle, manual, brute, fakegoogle, badpost, country, advanced, blacklist, waf
-		$groupingWHERE = '';
-		switch ($grouping) {
-			case self::BLOCK_TYPE_COMPLEX:
-				$groupingWHERE = ' AND blockType IN ("fakegoogle", "badpost", "country", "advanced", "waf")';
-				break;
-			case self::BLOCK_TYPE_BRUTE_FORCE:
-				$groupingWHERE = ' AND blockType IN ("throttle", "brute")';
-				break;
-			case self::BLOCK_TYPE_BLACKLIST:
-				$groupingWHERE = ' AND blockType IN ("blacklist", "manual")';
-				break;
-		}
-		
 		$count = $this->db->get_var(<<<SQL
 SELECT SUM(blockCount) as blockCount
 FROM {$this->db->prefix}wfBlockedIPLog
-WHERE unixday >= {$interval}{$groupingWHERE}
+WHERE unixday >= {$interval}
 SQL
 			);
 		return $count;
@@ -341,6 +324,38 @@ SQL
 		}
 		
 		return $failedLogins;
+	}
+
+	/**
+	 * Generate SQL from the whitelist. Uses the return format from wfUtils::getIPWhitelist
+	 *
+	 * @see wfUtils::getIPWhitelist
+	 * @param array $whitelisted_ips
+	 * @return string
+	 */
+	public function getBlockedIPWhitelistWhereClause($whitelisted_ips = null) {
+		if ($whitelisted_ips === null) {
+			$whitelisted_ips = wfUtils::getIPWhitelist();
+		}
+		if (!is_array($whitelisted_ips)) {
+			return false;
+		}
+
+		$where = '';
+
+		foreach ($whitelisted_ips as $ip_range) {
+			if (!is_a($ip_range, 'wfUserIPRange')) {
+				$ip_range = wfUtils::CIDR2wfUserIPRange($ip_range);
+			}
+
+			$where .= $ip_range->toSQL('IP') . ' OR ';
+		}
+		if ($where) {
+			// remove the extra ' OR '
+			$where = substr($where, 0, -4);
+		}
+
+		return $where;
 	}
 
 	/**

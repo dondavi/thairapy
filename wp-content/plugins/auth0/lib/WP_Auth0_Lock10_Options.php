@@ -35,11 +35,11 @@ class WP_Auth0_Lock10_Options {
   public function get_code_callback_url() {
     $protocol = $this->_get_boolean( $this->wp_options->get( 'force_https_callback' ) ) ? 'https' : null;
 
-    return site_url( 'index.php?auth0=1', $protocol );
+    return home_url( '/index.php?auth0=1', $protocol );
   }
 
   public function get_implicit_callback_url() {
-    return add_query_arg( 'auth0', 1, wp_login_url() );
+    return home_url( '/wp-login.php' );
   }
 
   public function get_sso() {
@@ -99,7 +99,7 @@ class WP_Auth0_Lock10_Options {
   }
 
   public function get_state_obj( $redirect_to = null ) {
-
+    
     if ( isset( $_GET['interim-login'] ) && $_GET['interim-login'] == 1 ) {
       $interim_login = true;
     } else {
@@ -113,8 +113,6 @@ class WP_Auth0_Lock10_Options {
     elseif ( isset( $_GET['redirect_to'] ) ) {
       $stateObj["redirect_to"] = addslashes( $_GET['redirect_to'] );
     }
-
-    $stateObj["state"] = 'nonce';
 
     return base64_encode( json_encode( $stateObj ) );
   }
@@ -156,6 +154,10 @@ class WP_Auth0_Lock10_Options {
     if ( $this->_is_valid( $settings, 'username_style' ) ) {
       $options_obj['usernameStyle'] = $settings['username_style'];
     }
+    if ( $this->_is_valid( $settings, 'remember_last_login' ) ) {
+      $options_obj['rememberLastLogin'] = $this->_get_boolean( $settings['remember_last_login'] );
+    }
+
     if ( $this->_is_valid( $settings, 'sso' ) ) {
       $options_obj['auth']['sso'] = $this->_get_boolean( $settings['sso'] );
     }
@@ -196,15 +198,17 @@ class WP_Auth0_Lock10_Options {
   }
 
   public function get_sso_options() {
-    $options["scope"] = "openid email identities ";
+    $options = $this->get_lock_options();
+
+    $options["scope"] = "openid ";
 
     if ( $this->get_auth0_implicit_workflow() ) {
-      $options["responseType"] = 'id_token';
-      $options["redirectUri"] = $this->get_implicit_callback_url();
+      $options["callbackOnLocationHash"] = true;
+      $options["callbackURL"] = $this->get_implicit_callback_url();
       $options["scope"] .= "name email picture nickname email_verified";
     } else {
-      $options["responseType"] = 'code';
-      $options["redirectUri"] = $this->get_code_callback_url();
+      $options["callbackOnLocationHash"] = false;
+      $options["callbackURL"] = $this->get_code_callback_url();
     }
 
     $redirect_to = null;
@@ -217,9 +221,9 @@ class WP_Auth0_Lock10_Options {
 
     unset( $options["authParams"] );
     $options["state"] = $this->get_state_obj( $redirect_to );
-    $options["nonce"] = 'nonce';
 
     return $options;
+
   }
 
   public function get_lock_options() {
@@ -237,7 +241,7 @@ class WP_Auth0_Lock10_Options {
     $extended_settings = $this->build_settings( $extended_settings );
 
     $extraOptions = array(
-      "auth"    => array(
+      "auth"    => array( 
         "params" => array("state" => $state ),
       ),
     );
@@ -248,7 +252,6 @@ class WP_Auth0_Lock10_Options {
       $extraOptions["auth"]["params"]["scope"] .= "name email picture nickname email_verified";
       $extraOptions["auth"]["responseType"] = 'token';
       $extraOptions["auth"]["redirectUrl"] = $this->get_implicit_callback_url();
-      $extraOptions["autoParseHash"] = false;
     } else {
       $extraOptions["auth"]["responseType"] = 'code';
       $extraOptions["auth"]["redirectUrl"] = $this->get_code_callback_url();

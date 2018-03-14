@@ -43,3 +43,4 @@ class wfArray {
 		return $this->size;
 	}
 }
+?>

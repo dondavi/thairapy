@@ -4,7 +4,7 @@ $lock_options = new WP_Auth0_Lock10_Options( $specialSettings );
 
 if ( ! $lock_options->can_show() ) {
 ?>
-    <p><?php _e( 'Auth0 Integration has not yet been set up! Please visit your Wordpress Auth0 settings and fill in the required settings.', 'wp-auth0' ); ?></p>
+    <p><?php _e( 'Auth0 Integration has not yet been set up! Please visit your Wordpress Auth0 settings and fill in the required settings.', WPA0_LANG ); ?></p>
 <?php
   return;
 }
@@ -66,25 +66,29 @@ document.addEventListener("DOMContentLoaded", function() {
     var options = <?php echo $options; ?>;
 
     options.additionalSignUpFields = <?php echo $lock_options->get_custom_signup_fields(); ?>;
+
+    var lock = new <?php echo $lock_options->get_lock_classname(); ?>('<?php echo $lock_options->get_client_id(); ?>', '<?php echo $lock_options->get_domain(); ?>', options);
+
+    <?php if ( ! empty( $custom_js ) ) { ?>
+
+        <?php echo $custom_js;?>
+
+    <?php } ?>
+
+
     <?php if ( $lock_options->get_auth0_implicit_workflow() ) { ?>
 
         if (window.location.hash !== '' && window.location.hash.indexOf('id_token') !== -1) {
-          ignore_sso = true;
-          var hash = window.location.hash;
-          if (hash[0] === '#') {
-            hash = hash.slice(1);
-          }
-          var data = hash.split('&').reduce(function(p,c,i) {
-            var parts = c.split('=');
-            p[parts[0]] = parts[1]
-            return p;
-          }, {});
-
-          post('<?php echo site_url( 'index.php?auth0=implicit' ); ?>', {
-            token:data.id_token,
-            state:data.state
-          }, 'POST');
+            ignore_sso = true;
         }
+
+        lock.on("authenticated", function(authResult) {
+            post('<?php echo home_url( '/index.php?auth0=implicit' ); ?>', {
+                token:authResult.idToken,
+                state:authResult.state
+            }, 'POST');
+
+        });
 
         function post(path, params, method) {
             method = method || "post"; // Set method to post by default if not specified.
@@ -116,28 +120,26 @@ document.addEventListener("DOMContentLoaded", function() {
             document.body.appendChild(form);
             form.submit();
         }
-    
+
+        function a0ShowLoginModal() {
+            lock.<?php echo $lock_options->get_lock_show_method(); ?>();
+        }
     <?php } ?>
 
-    if (!ignore_sso) {
-      var lock = new <?php echo $lock_options->get_lock_classname(); ?>('<?php echo $lock_options->get_client_id(); ?>', '<?php echo $lock_options->get_domain(); ?>', options);
-
-      <?php if ( ! empty( $custom_js ) ) { ?>
-
-          <?php echo $custom_js;?>
-
-      <?php } ?>
-
-      function a0ShowLoginModal() {
-          lock.<?php echo $lock_options->get_lock_show_method(); ?>();
-      }
-
-      <?php if ( ! $lock_options->show_as_modal() ) { ?>
-          a0ShowLoginModal();
-      <?php } else { ?>
-          jQuery('#a0LoginButton').click(a0ShowLoginModal);
-      <?php } ?>
+    function a0ShowLoginModal() {
+        lock.<?php echo $lock_options->get_lock_show_method(); ?>();
     }
 
+    <?php if ( ! $lock_options->show_as_modal() ) { ?>
+        a0ShowLoginModal();
+    <?php } else { ?>
+        jQuery('#a0LoginButton').click(a0ShowLoginModal);
+    <?php } ?>
+
+    if (lock.on) {
+        lock.on('error shown', function(){
+            jQuery(".a0-footer").parent().css('margin-bottom', '50px');
+        });
+    }
 });
 </script>

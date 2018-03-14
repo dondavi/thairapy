@@ -37,3 +37,4 @@ ENDKEY;
 		return base64_encode($encSymKey);
 	}
 }
+?>

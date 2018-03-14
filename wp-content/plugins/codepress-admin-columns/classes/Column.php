@@ -136,7 +136,7 @@ class AC_Column {
 	 * @return $this
 	 */
 	public function set_label( $label ) {
-		$this->label = $label;
+		$this->label = (string) $label;
 
 		return $this;
 	}
@@ -376,6 +376,28 @@ class AC_Column {
 		}
 
 		return $value;
+	}
+
+	/**
+	 * True when the column is sortable by default
+	 *
+	 * return bool
+	 */
+	public function is_native_sortable() {
+		if ( ! $this->is_original() ) {
+			return false;
+		}
+
+		$table = $this->get_list_screen()->get_list_table();
+
+		if ( ! $table instanceof WP_List_Table ) {
+			return false;
+		}
+
+		$column_info = $table->get_column_info();
+		$sortables = $column_info[2];
+
+		return isset( $sortables[ $this->get_type() ] );
 	}
 
 	/**

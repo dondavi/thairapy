@@ -103,7 +103,7 @@ class WP_Auth0_UsersRepo {
 			)
 		); // if true, we can join the a0 user with the wp one
 
-		$joinUser = get_user_by( 'email', $userinfo->email );
+		$joinUser = get_user_by( 'email', $userinfo->email ); 
 
 		$auto_provisioning = WP_Auth0_Options::Instance()->get('auto_provisioning');
 		$allow_signup = WP_Auth0_Options::Instance()->is_wp_registration_enabled() || $auto_provisioning;
@@ -117,9 +117,7 @@ class WP_Auth0_UsersRepo {
 			$auth0_id = get_user_meta( $joinUser->ID, $wpdb->prefix.'auth0_id', true);
 
 			if ($auth0_id) { // if it has an a0 id, we cant join it
-				$msg = __( 'There is a user with the same email', 'wp-auth0' );
-				
-				throw new WP_Auth0_CouldNotCreateUserException( $msg );
+				throw new WP_Auth0_CouldNotCreateUserException('There is a user with the same email');
 			}
 		}
 
@@ -144,9 +142,7 @@ class WP_Auth0_UsersRepo {
 			if ( is_wp_error( $user_id ) ) {
 				throw new WP_Auth0_CouldNotCreateUserException( $user_id->get_error_message() );
 			}elseif ( $user_id == -2 ) {
-				$msg = __( 'Could not create user. The registration process were rejected. Please verify that your account is whitelisted for this system. Please contact your site’s administrator.', 'wp-auth0' );
-				
-				throw new WP_Auth0_CouldNotCreateUserException( $msg );
+				throw new WP_Auth0_CouldNotCreateUserException( 'Could not create user. The registration process were rejected. Please verify that your account is whitelisted for this system. Please contact your site’s administrator.' );
 			}elseif ( $user_id <0 ) {
 				throw new WP_Auth0_CouldNotCreateUserException();
 			}
@@ -161,51 +157,41 @@ class WP_Auth0_UsersRepo {
 		return $user_id;
 	}
 
-	/**
-	 * Look for and return a user with an Auth0 ID
-	 *
-	 * @param string $id - An Auth0 user ID, like "provider|id"
-	 *
-	 * @return null|WP_User
-	 */
-	public function find_auth0_user ( $id ) {
+	public function find_auth0_user( $id ) {
 		global $wpdb;
 
-		if ( empty( $id ) ) {
-			WP_Auth0_ErrorManager::insert_auth0_error( __METHOD__, __( 'Empty user id', 'wp-auth0' ) );
+		$query = array( 
+  		'meta_key' => $wpdb->prefix.'auth0_id',
+  		'meta_value' => $id,
+  		'blog_id' => 0,
+  	);
 
-			return null;
-		}
-
-		$query = array(
-			'meta_key'   => $wpdb->prefix . 'auth0_id',
-			'meta_value' => $id,
-			'blog_id'    => 0,
-		);
-
-		$users = get_users( $query );
+		$users = get_users( $query ); 
 
 		if ( $users instanceof WP_Error ) {
-			WP_Auth0_ErrorManager::insert_auth0_error( '_find_auth0_user', $users->get_error_message() );
-
+			WP_Auth0_ErrorManager::insert_auth0_error( '_find_auth0_user', $userRow );
 			return null;
 		}
 
-		return ! empty( $users[ 0 ] ) ? $users[ 0 ] : null;
+		if (!empty($users)) {
+			return $users[0];
+		}
+
+		return null;
 	}
 
 	public function update_auth0_object( $user_id, $userinfo ) {
 		global $wpdb;
-		update_user_meta( $user_id, $wpdb->prefix.'auth0_id', ( isset( $userinfo->user_id ) ? $userinfo->user_id : $userinfo->sub ));
-		update_user_meta( $user_id, $wpdb->prefix.'auth0_obj', WP_Auth0_Serializer::serialize( $userinfo ));
-		update_user_meta( $user_id, $wpdb->prefix.'last_update', date( 'c' ) );
+		update_user_meta( $user_id, $wpdb->prefix.'auth0_id', ( isset( $userinfo->user_id ) ? $userinfo->user_id : $userinfo->sub )); 
+		update_user_meta( $user_id, $wpdb->prefix.'auth0_obj', WP_Auth0_Serializer::serialize( $userinfo )); 
+		update_user_meta( $user_id, $wpdb->prefix.'last_update', date( 'c' ) ); 
 	}
 
 	public function delete_auth0_object( $user_id ) {
 		global $wpdb;
-		delete_user_meta( $user_id, $wpdb->prefix.'auth0_id' );
-		delete_user_meta( $user_id, $wpdb->prefix.'auth0_obj' );
-		delete_user_meta( $user_id, $wpdb->prefix.'last_update' );
+		delete_user_meta( $user_id, $wpdb->prefix.'auth0_id' ); 
+		delete_user_meta( $user_id, $wpdb->prefix.'auth0_obj' ); 
+		delete_user_meta( $user_id, $wpdb->prefix.'last_update' ); 
 	}
 
 }

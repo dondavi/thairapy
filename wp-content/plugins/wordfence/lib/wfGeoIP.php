@@ -822,3 +822,4 @@ class wfGeoIP {
 		}
 	}
 }
+?>

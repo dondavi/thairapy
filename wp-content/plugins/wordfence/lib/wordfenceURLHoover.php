@@ -96,7 +96,7 @@ class wordfenceURLHoover {
 	
 	public function hoover($id, $data, $excludedHosts = array()) {
 		$this->currentHooverID = $id;
-		$this->_foundSome = 0;
+		$this->_foundSome = false;
 		$this->_excludedHosts = $excludedHosts;
 		@preg_replace_callback('/\b((?:[a-z][\w-]+:(?:\/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:\'".,<>?«»“”‘’]))/i', array($this, 'captureURL'), $data);
 		$this->writeHosts();
@@ -122,8 +122,6 @@ class wordfenceURLHoover {
 		if (!filter_var($url, FILTER_VALIDATE_URL)) {
 			return;
 		}
-		
-		$this->_foundSome++;
 		
 		$host = (isset($components['host']) ? $components['host'] : '');
 		$path = (isset($components['path']) && !empty($components['path']) ? $components['path'] : '/');
@@ -167,6 +165,8 @@ class wordfenceURLHoover {
 			}
 			$this->hostsToAdd->collectGarbage();
 		}
+		
+		$this->_foundSome = true;
 	}
 	public function getBaddies() {
 		wordfence::status(4, 'info', "Gathering host keys.");
@@ -597,3 +597,4 @@ class wordfenceURLHoover {
 		return $array[count($array) - 1];
 	}
 }
+?>

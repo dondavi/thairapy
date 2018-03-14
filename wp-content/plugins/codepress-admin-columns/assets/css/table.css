@@ -24,11 +24,7 @@
   content: ""; }
 
 /* Dynamic variables */
-<<<<<<< HEAD
 /* =Status icons
-=======
-/* =Status icons
->>>>>>> 676c6ed3ea2781a8ef08b445789c78df38727548
 -------------------------------------------------------------- */
 .column-status .dashicons {
   font-size: 22px; }
@@ -40,20 +36,12 @@
     font-size: 15px;
     margin-left: -2px; }
 
-<<<<<<< HEAD
 /* =Available Sizes column
-=======
-/* =Available Sizes column
->>>>>>> 676c6ed3ea2781a8ef08b445789c78df38727548
 -------------------------------------------------------------- */
 .ac-image-sizes .ac-missing-size {
   color: #929292; }
 
-<<<<<<< HEAD
 /* =Comments bubble
-=======
-/* =Comments bubble
->>>>>>> 676c6ed3ea2781a8ef08b445789c78df38727548
 -------------------------------------------------------------- */
 .ac-comment-bubble .post-com-count {
   display: inline-block;
@@ -116,11 +104,7 @@
 .ac-comment-bubble .post-com-count-no-pending {
   display: none; }
 
-<<<<<<< HEAD
 /* =General
-=======
-/* =General
->>>>>>> 676c6ed3ea2781a8ef08b445789c78df38727548
 -------------------------------------------------------------- */
 .ac-divider {
   display: inline-block;
@@ -203,11 +187,7 @@ body.users-php .tablenav .actions a.add-new-h2 {
 body.upload-php .tablenav.top .ac-button {
   float: none; }
 
-<<<<<<< HEAD
 /* =Column values
-=======
-/* =Column values
->>>>>>> 676c6ed3ea2781a8ef08b445789c78df38727548
 -------------------------------------------------------------- */
 .ac-toggle-box-link:focus {
   outline: none;
@@ -238,20 +218,12 @@ table.ac-table-items {
       padding-right: 6px;
       text-align: left; }
 
-<<<<<<< HEAD
 /* =Post Format column
-=======
-/* =Post Format column
->>>>>>> 676c6ed3ea2781a8ef08b445789c78df38727548
 -------------------------------------------------------------- */
 .ac-post-state-format:before {
   color: #a7a7a7; }
 
-<<<<<<< HEAD
 /* =Image in Content column
-=======
-/* =Image in Content column
->>>>>>> 676c6ed3ea2781a8ef08b445789c78df38727548
 -------------------------------------------------------------- */
 .ac-image-details .ac-image-info {
   display: inline-block;
@@ -298,11 +270,7 @@ table.ac-table-items {
   .ac-image-details a.ac-image-info:hover span.dashicons {
     color: #3d4350; }
 
-<<<<<<< HEAD
 /* =Storage Space column
-=======
-/* =Storage Space column
->>>>>>> 676c6ed3ea2781a8ef08b445789c78df38727548
 -------------------------------------------------------------- */
 .ac-upload-space .ac-upload-space-labels {
   display: table;
@@ -363,20 +331,12 @@ table.ac-table-items {
 .ac-upload-space.full .ac-upload-space-progress-bar {
   background-color: #dc3232; }
 
-<<<<<<< HEAD
 /* =Network screen
-=======
-/* =Network screen
->>>>>>> 676c6ed3ea2781a8ef08b445789c78df38727548
 -------------------------------------------------------------- */
 #form-site-list .tablenav .actions .ac-button {
   float: none; }
 
-<<<<<<< HEAD
 /* =General Column
-=======
-/* =General Column
->>>>>>> 676c6ed3ea2781a8ef08b445789c78df38727548
 -------------------------------------------------------------- */
 .ac-inline-info {
   display: inline-block;
@@ -429,11 +389,7 @@ table.ac-table-items {
 .ac-more-link-hide {
   cursor: pointer; }
 
-<<<<<<< HEAD
 /* =Images Column
-=======
-/* =Images Column
->>>>>>> 676c6ed3ea2781a8ef08b445789c78df38727548
 -------------------------------------------------------------- */
 .ac-image-container {
   margin-bottom: -6px; }
@@ -514,11 +470,7 @@ table.ac-table-items {
     background-color: rgba(255, 0, 0, 0.68);
     border: none; }
 
-<<<<<<< HEAD
 /* =Color Column
-=======
-/* =Color Column
->>>>>>> 676c6ed3ea2781a8ef08b445789c78df38727548
 -------------------------------------------------------------- */
 div.cpac-color {
   line-height: 26px; }
@@ -544,11 +496,7 @@ div.cpac-color span {
   margin-left: 12px;
   margin-right: 0; }
 
-<<<<<<< HEAD
 /* =Actions column
-=======
-/* =Actions column
->>>>>>> 676c6ed3ea2781a8ef08b445789c78df38727548
 -------------------------------------------------------------- */
 .button.cpac-button-action {
   position: relative;
@@ -653,11 +601,7 @@ div.cpac-color span {
   .column-actions.cpac_use_icons .row-actions > span.download a:before {
     content: "\f316"; }
 
-<<<<<<< HEAD
 /* Responsive table screen
-=======
-/* Responsive table screen
->>>>>>> 676c6ed3ea2781a8ef08b445789c78df38727548
 -------------------------------------------------------------- */
 @media screen and (max-width: 782px) {
   .wp-list-table.widefat thead th {
@@ -669,11 +613,7 @@ div.cpac-color span {
     .wp-list-table.widefat tbody tr:not(.inline-edit-row):not(.no-items) td.column-primary {
       display: block; } }
 
-<<<<<<< HEAD
 /* =qTip2
-=======
-/* =qTip2
->>>>>>> 676c6ed3ea2781a8ef08b445789c78df38727548
 -------------------------------------------------------------- */
 .ac-tip {
   display: inline-block; }

@@ -1,5 +1,4 @@
 <?php
-if (!defined('WORDFENCE_VERSION')) { exit; }
 wfUtils::doNotCache();
 header('HTTP/1.1 503 Service Temporarily Unavailable');
 header('Status: 503 Service Temporarily Unavailable');

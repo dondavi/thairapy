@@ -19,13 +19,7 @@ class AC_Column_User_FirstName extends AC_Column_Meta {
 	}
 
 	public function get_value( $user_id ) {
-		$value = $this->get_raw_value( $user_id );
-
-		if ( ! $value ) {
-			return $this->get_empty_char();
-		}
-
-		return $value;
+		return $this->get_raw_value( $user_id );
 	}
 
 	public function get_raw_value( $user_id ) {

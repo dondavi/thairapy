@@ -1,22 +1,58 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: CodeLights\n"
-"POT-Creation-Date: 2017-11-17 18:38+0300\n"
-"PO-Revision-Date: 2017-11-17 18:40+0300\n"
+"POT-Creation-Date: 2016-07-25 12:17+0300\n"
+"PO-Revision-Date: 2016-07-25 12:30+0300\n"
 "Last-Translator: Ruslan <rs@codelights.com>\n"
 "Language-Team: \n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.4\n"
+"X-Generator: Poedit 1.5.4\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
-"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: .\n"
+
+#: templates/ebuilder.php:20
+msgid "Close"
+msgstr ""
+
+#: templates/ebuilder.php:21
+msgid "Save changes"
+msgstr ""
+
+#: templates/elist.php:11
+msgid "Insert shortcode"
+msgstr ""
+
+#: templates/eform/eform.php:39
+msgid "General"
+msgstr ""
+
+#: templates/eform/checkboxes.php:12
+msgid "Yes"
+msgstr ""
+
+#: templates/eform/link.php:24
+msgid "Insert link"
+msgstr ""
+
+#: templates/eform/images.php:25
+msgid "Add images"
+msgstr ""
+
+#: templates/eform/images.php:25
+msgid "Add image"
+msgstr ""
+
+#: editors-support/js_composer/js_composer.php:31
+msgid "Content"
+msgstr ""
 
 #: config/elements.php:8
 msgid "Stats Counter"
@@ -47,37 +83,31 @@ msgstr ""
 msgid "Counter Title"
 msgstr ""
 
-#: config/elements.php:32 config/elements.php:142 config/elements.php:620
+#: config/elements.php:32 config/elements.php:143 config/elements.php:681
 msgid "Animation Duration"
 msgstr ""
 
-#: config/elements.php:33 config/elements.php:143 config/elements.php:621
+#: config/elements.php:33 config/elements.php:144 config/elements.php:682
 msgid "In milliseconds"
 msgstr ""
 
 #: config/elements.php:36 config/elements.php:43 config/elements.php:50
-#: config/elements.php:56 config/elements.php:62 config/elements.php:67
-#: config/elements.php:349 config/elements.php:357 config/elements.php:365
-#: config/elements.php:372 config/elements.php:379 config/elements.php:385
-#: config/elements.php:393 config/elements.php:398 config/elements.php:473
-#: config/elements.php:480 config/elements.php:496 config/elements.php:508
-#: config/elements.php:516 config/elements.php:524 config/elements.php:529
-#: config/elements.php:641 config/elements.php:649 config/elements.php:655
-#: config/elements.php:661 config/elements.php:673 config/elements.php:690
-#: config/elements.php:695 config/elements.php:827 config/elements.php:835
-#: config/elements.php:850 config/elements.php:857 config/elements.php:864
-#: config/elements.php:871 config/elements.php:878 config/elements.php:885
-#: config/elements.php:892 config/elements.php:897 config/elements.php:968
-#: config/elements.php:973 config/elements.php:979 config/elements.php:988
-#: config/elements.php:996 config/elements.php:1005 config/elements.php:1010
-msgid "Style"
+#: config/elements.php:56 config/elements.php:62 config/elements.php:68
+#: config/elements.php:348 config/elements.php:356 config/elements.php:364
+#: config/elements.php:371 config/elements.php:378 config/elements.php:384
+#: config/elements.php:392 config/elements.php:398 config/elements.php:629
+#: config/elements.php:637 config/elements.php:643 config/elements.php:649
+#: config/elements.php:661 config/elements.php:678 config/elements.php:686
+#: config/elements.php:694 config/elements.php:700
+msgid "Custom"
 msgstr ""
 
 #: config/elements.php:39
 msgid "Value Font Size"
 msgstr ""
 
-#: config/elements.php:46
+#: config/elements.php:46 config/elements.php:238 config/elements.php:294
+#: config/elements.php:536
 msgid "Title Font Size"
 msgstr ""
 
@@ -89,169 +119,183 @@ msgstr ""
 msgid "Title Color"
 msgstr ""
 
-#: config/elements.php:65 config/elements.php:396 config/elements.php:527
-#: config/elements.php:693 config/elements.php:895 config/elements.php:1008
-msgid "Extra CSS class"
+#: config/elements.php:65 config/elements.php:395 config/elements.php:527
+#: config/elements.php:697 config/elements.php:892 config/elements.php:1006
+msgid "Extra class name"
 msgstr ""
 
-#: config/elements.php:72
-msgid "FlipBox"
+#: config/elements.php:66 config/elements.php:396 config/elements.php:528
+#: config/elements.php:698 config/elements.php:893 config/elements.php:1007
+msgid ""
+"If you wish to style particular content element differently, then use this "
+"field to add a class name and then refer to it in your css file."
 msgstr ""
 
 #: config/elements.php:73
+msgid "FlipBox"
+msgstr ""
+
+#: config/elements.php:74
 msgid "Two-sided content element, flipping on hover"
 msgstr ""
 
-#: config/elements.php:82 config/elements.php:435
+#: config/elements.php:83 config/elements.php:435
 msgid "Link"
 msgstr ""
 
-#: config/elements.php:85 config/elements.php:167
-msgid "None"
-msgstr ""
-
 #: config/elements.php:86
-msgid "Add link to the whole FlipBox"
+msgid "No Link"
 msgstr ""
 
 #: config/elements.php:87
-msgid "Add link as a button on the Back Side"
+msgid "Add link to the whole FlipBox"
 msgstr ""
 
-#: config/elements.php:92
+#: config/elements.php:88
+msgid "Add link as a separate button"
+msgstr ""
+
+#: config/elements.php:93
 msgid "Link URL"
 msgstr ""
 
-#: config/elements.php:97
+#: config/elements.php:98
 msgid "Button Label"
 msgstr ""
 
-#: config/elements.php:103 config/elements.php:743
+#: config/elements.php:104 config/elements.php:747
 msgid "Button Background Color"
 msgstr ""
 
-#: config/elements.php:109 config/elements.php:750
+#: config/elements.php:110 config/elements.php:754
 msgid "Button Text Color"
 msgstr ""
 
-#: config/elements.php:115 config/elements.php:439 config/elements.php:608
+#: config/elements.php:116 config/elements.php:439 config/elements.php:610
 msgid "Animation Type"
 msgstr ""
 
-#: config/elements.php:118
+#: config/elements.php:119
 msgid "Card Flip"
 msgstr ""
 
-#: config/elements.php:119
+#: config/elements.php:120
 msgid "Cube Tilt"
 msgstr ""
 
-#: config/elements.php:120
+#: config/elements.php:121
 msgid "Cube Flip"
 msgstr ""
 
-#: config/elements.php:121
+#: config/elements.php:122
 msgid "Cover Open"
 msgstr ""
 
-#: config/elements.php:126
+#: config/elements.php:127
 msgid "Animation Direction"
 msgstr ""
 
-#: config/elements.php:129
+#: config/elements.php:130
 msgid "Up"
 msgstr ""
 
-#: config/elements.php:130
+#: config/elements.php:131
 msgid "Up-Right"
 msgstr ""
 
-#: config/elements.php:131 config/elements.php:504 config/elements.php:669
-#: config/elements.php:793
+#: config/elements.php:132 config/elements.php:504 config/elements.php:657
+#: config/elements.php:797
 msgid "Right"
 msgstr ""
 
-#: config/elements.php:132
+#: config/elements.php:133
 msgid "Down-Right"
 msgstr ""
 
-#: config/elements.php:133
+#: config/elements.php:134
 msgid "Down"
 msgstr ""
 
-#: config/elements.php:134
+#: config/elements.php:135
 msgid "Down-Left"
 msgstr ""
 
-#: config/elements.php:135 config/elements.php:502 config/elements.php:667
-#: config/elements.php:791
+#: config/elements.php:136 config/elements.php:502 config/elements.php:655
+#: config/elements.php:795
 msgid "Left"
 msgstr ""
 
-#: config/elements.php:136
+#: config/elements.php:137
 msgid "Up-Left"
 msgstr ""
 
-#: config/elements.php:149 config/elements.php:454
+#: config/elements.php:150 config/elements.php:454
 msgid "Animation Easing"
 msgstr ""
 
-#: config/elements.php:164 config/elements.php:254 config/elements.php:255
-#: config/elements.php:256
-msgid "Icon"
+#: config/elements.php:165
+msgid "Icon to Display"
 msgstr ""
 
-#: config/elements.php:168 config/elements.php:175
-#, php-format
-msgid "%s icon"
+#: config/elements.php:168
+msgid "None"
 msgstr ""
 
 #: config/elements.php:169
+msgid "FontAwesome Icon"
+msgstr ""
+
+#: config/elements.php:170
 msgid "Custom Image"
 msgstr ""
 
-#: config/elements.php:171 config/elements.php:177 config/elements.php:185
-#: config/elements.php:197 config/elements.php:204 config/elements.php:211
-#: config/elements.php:218 config/elements.php:227 config/elements.php:236
-#: config/elements.php:243 config/elements.php:248 config/elements.php:258
-#: config/elements.php:263 config/elements.php:268 config/elements.php:274
-#: config/elements.php:282
+#: config/elements.php:172 config/elements.php:178 config/elements.php:186
+#: config/elements.php:198 config/elements.php:205 config/elements.php:212
+#: config/elements.php:218 config/elements.php:226 config/elements.php:235
+#: config/elements.php:242 config/elements.php:247 config/elements.php:257
+#: config/elements.php:262 config/elements.php:267 config/elements.php:273
+#: config/elements.php:281
 msgid "Front Side"
 msgstr ""
 
-#: config/elements.php:174
+#: config/elements.php:175
 msgid "Icon Name"
 msgstr ""
 
-#: config/elements.php:181
+#: config/elements.php:176
+#, php-format
+msgid "<a href=\"%s\" target=\"_blank\">FontAwesome</a> icon"
+msgstr ""
+
+#: config/elements.php:182
 msgid "Icon Size"
 msgstr ""
 
-#: config/elements.php:189
+#: config/elements.php:190
 msgid "Icon Style"
 msgstr ""
 
-#: config/elements.php:192
+#: config/elements.php:193
 msgid "Simple"
 msgstr ""
 
-#: config/elements.php:193
+#: config/elements.php:194
 msgid "Circle Background"
 msgstr ""
 
-#: config/elements.php:194
+#: config/elements.php:195
 msgid "Square Background"
 msgstr ""
 
-#: config/elements.php:201
+#: config/elements.php:202
 msgid "Icon Color"
 msgstr ""
 
-#: config/elements.php:208
+#: config/elements.php:209
 msgid "Icon Background Color"
 msgstr ""
 
-#: config/elements.php:215 config/elements.php:413 config/elements.php:757
+#: config/elements.php:216 config/elements.php:761
 msgid "Image"
 msgstr ""
 
@@ -259,89 +303,89 @@ msgstr ""
 msgid "Image Width"
 msgstr ""
 
-#: config/elements.php:223 config/elements.php:345 config/elements.php:389
+#: config/elements.php:223 config/elements.php:344 config/elements.php:388
 #: config/elements.php:512 config/elements.php:520
 msgid "In pixels or percents"
 msgstr ""
 
-#: config/elements.php:231 config/elements.php:254 config/elements.php:255
-#: config/elements.php:256 config/elements.php:288 config/elements.php:310
-#: config/elements.php:311 config/elements.php:312 config/elements.php:425
+#: config/elements.php:230 config/elements.php:253 config/elements.php:254
+#: config/elements.php:255 config/elements.php:287 config/elements.php:309
+#: config/elements.php:310 config/elements.php:311 config/elements.php:425
 msgid "Title"
 msgstr ""
 
-#: config/elements.php:239 config/elements.php:295 config/elements.php:535
-msgid "Title Size"
-msgstr ""
-
-#: config/elements.php:246 config/elements.php:254 config/elements.php:255
-#: config/elements.php:256 config/elements.php:302 config/elements.php:310
-#: config/elements.php:311 config/elements.php:312 config/elements.php:431
+#: config/elements.php:245 config/elements.php:253 config/elements.php:254
+#: config/elements.php:255 config/elements.php:301 config/elements.php:309
+#: config/elements.php:310 config/elements.php:311 config/elements.php:431
 msgid "Description"
 msgstr ""
 
-#: config/elements.php:251 config/elements.php:307
+#: config/elements.php:250 config/elements.php:306
 msgid "Elements Order"
 msgstr ""
 
-#: config/elements.php:261 config/elements.php:317 config/elements.php:469
-#: config/elements.php:971
+#: config/elements.php:253 config/elements.php:254 config/elements.php:255
+msgid "Icon"
+msgstr ""
+
+#: config/elements.php:260 config/elements.php:316 config/elements.php:469
+#: config/elements.php:969
 msgid "Background Color"
 msgstr ""
 
-#: config/elements.php:266 config/elements.php:322 config/elements.php:476
-#: config/elements.php:781 config/elements.php:977
+#: config/elements.php:265 config/elements.php:321 config/elements.php:476
+#: config/elements.php:785 config/elements.php:975
 msgid "Text Color"
 msgstr ""
 
-#: config/elements.php:271 config/elements.php:327
+#: config/elements.php:270 config/elements.php:326
 msgid "Background Image"
 msgstr ""
 
-#: config/elements.php:277 config/elements.php:333 config/elements.php:418
-#: config/elements.php:764
+#: config/elements.php:276 config/elements.php:332 config/elements.php:418
+#: config/elements.php:768
 msgid "Image Size"
 msgstr ""
 
-#: config/elements.php:292 config/elements.php:299 config/elements.php:304
-#: config/elements.php:314 config/elements.php:319 config/elements.php:324
-#: config/elements.php:330 config/elements.php:338
+#: config/elements.php:291 config/elements.php:298 config/elements.php:303
+#: config/elements.php:313 config/elements.php:318 config/elements.php:323
+#: config/elements.php:329 config/elements.php:337
 msgid "Back Side"
 msgstr ""
 
-#: config/elements.php:310 config/elements.php:311 config/elements.php:312
-msgid "Button (if set)"
+#: config/elements.php:309 config/elements.php:310 config/elements.php:311
+msgid "Button (if exists)"
 msgstr ""
 
-#: config/elements.php:344 config/elements.php:511
+#: config/elements.php:343 config/elements.php:511
 msgid "Width"
 msgstr ""
 
-#: config/elements.php:352
+#: config/elements.php:351
 msgid "Height"
 msgstr ""
 
-#: config/elements.php:353
+#: config/elements.php:352
 msgid "Leave blank to use front height"
 msgstr ""
 
-#: config/elements.php:362
-msgid "Center the content vertically"
+#: config/elements.php:361
+msgid "Center-Align Content Vertically"
 msgstr ""
 
-#: config/elements.php:368 config/elements.php:853
-msgid "Corners Radius"
+#: config/elements.php:367 config/elements.php:850
+msgid "Border Radius"
 msgstr ""
 
-#: config/elements.php:375
+#: config/elements.php:374
 msgid "Border Width"
 msgstr ""
 
-#: config/elements.php:382
+#: config/elements.php:381
 msgid "Border Color"
 msgstr ""
 
-#: config/elements.php:388 config/elements.php:519
+#: config/elements.php:387 config/elements.php:519
 msgid "Padding"
 msgstr ""
 
@@ -351,6 +395,21 @@ msgstr ""
 
 #: config/elements.php:404
 msgid "Hoverable image with additional data"
+msgstr ""
+
+#: config/elements.php:413
+msgid "Banner Image"
+msgstr ""
+
+#: config/elements.php:473 config/elements.php:480 config/elements.php:496
+#: config/elements.php:508 config/elements.php:516 config/elements.php:524
+#: config/elements.php:530 config/elements.php:824 config/elements.php:832
+#: config/elements.php:847 config/elements.php:854 config/elements.php:861
+#: config/elements.php:868 config/elements.php:875 config/elements.php:882
+#: config/elements.php:889 config/elements.php:895 config/elements.php:966
+#: config/elements.php:971 config/elements.php:977 config/elements.php:986
+#: config/elements.php:994 config/elements.php:1003 config/elements.php:1009
+msgid "Style"
 msgstr ""
 
 #: config/elements.php:483
@@ -369,394 +428,358 @@ msgstr ""
 msgid "Portrait"
 msgstr ""
 
-#: config/elements.php:499
+#: config/elements.php:499 config/elements.php:652
 msgid "Text Alignment"
 msgstr ""
 
-#: config/elements.php:503 config/elements.php:668 config/elements.php:792
+#: config/elements.php:503 config/elements.php:656 config/elements.php:796
 msgid "Center"
 msgstr ""
 
-#: config/elements.php:540 config/elements.php:548 config/elements.php:563
-#: config/elements.php:571 config/elements.php:579
+#: config/elements.php:541 config/elements.php:549 config/elements.php:557
+#: config/elements.php:565 config/elements.php:581
 msgid "Typography"
 msgstr ""
 
-#: config/elements.php:543
-msgid "Title Size for Mobiles"
+#: config/elements.php:544
+msgid "Description Font Size"
 msgstr ""
 
-#: config/elements.php:544 config/elements.php:575 config/elements.php:645
-msgid "Applied when the screen width is less than 600px"
+#: config/elements.php:552
+msgid "Title Font Size for Mobiles"
 msgstr ""
 
-#: config/elements.php:551
-msgid "Title Tag Name"
+#: config/elements.php:553 config/elements.php:561 config/elements.php:633
+msgid "This value will be applied when screen width is less than 600px"
 msgstr ""
 
-#: config/elements.php:566
-msgid "Description Size"
-msgstr ""
-
-#: config/elements.php:574
+#: config/elements.php:560
 msgid "Description Size for Mobiles"
 msgstr ""
 
-#: config/elements.php:584
+#: config/elements.php:568
+msgid "Title Tag Name"
+msgstr ""
+
+#: config/elements.php:569
+msgid "Used for SEO purposes"
+msgstr ""
+
+#: config/elements.php:586
 msgid "Interactive Text"
 msgstr ""
 
-#: config/elements.php:585
+#: config/elements.php:587
 msgid "Text with some dynamicatlly changing part"
 msgstr ""
 
-#: config/elements.php:594
+#: config/elements.php:596
 msgid "Text States"
 msgstr ""
 
-#: config/elements.php:595
+#: config/elements.php:597
 msgid "Each state from a new line"
 msgstr ""
 
-#: config/elements.php:603
+#: config/elements.php:605
 msgid "Bold Dynamic Text"
 msgstr ""
 
-#: config/elements.php:611
+#: config/elements.php:613
 msgid "Fade in the whole part"
 msgstr ""
 
-#: config/elements.php:612
+#: config/elements.php:614
 msgid "Flip the whole part"
 msgstr ""
 
-#: config/elements.php:613
+#: config/elements.php:615
 msgid "Flip character by character"
 msgstr ""
 
-#: config/elements.php:614
+#: config/elements.php:616
 msgid "Zoom in the whole part"
 msgstr ""
 
-#: config/elements.php:615
+#: config/elements.php:617
 msgid "Zoom in character by character"
 msgstr ""
 
-#: config/elements.php:627
-msgid "Animation Delay"
+#: config/elements.php:625
+msgid "Font Size"
 msgstr ""
 
-#: config/elements.php:628 config/elements.php:808
-msgid "In seconds"
+#: config/elements.php:632
+msgid "Font Size for Mobiles"
 msgstr ""
 
-#: config/elements.php:637 config/elements.php:773
-msgid "Text Size"
-msgstr ""
-
-#: config/elements.php:644
-msgid "Text Size for Mobiles"
-msgstr ""
-
-#: config/elements.php:652
+#: config/elements.php:640
 msgid "Basic Text Color"
 msgstr ""
 
-#: config/elements.php:658
+#: config/elements.php:646
 msgid "Dynamic Text Color"
 msgstr ""
 
 #: config/elements.php:664
-msgid "Alignment"
-msgstr ""
-
-#: config/elements.php:676
 msgid "Tag Name"
 msgstr ""
 
-#: config/elements.php:700
+#: config/elements.php:689
+msgid "Animation Delay"
+msgstr ""
+
+#: config/elements.php:690 config/elements.php:805
+msgid "In seconds"
+msgstr ""
+
+#: config/elements.php:705
 msgid "Modal Popup"
 msgstr ""
 
-#: config/elements.php:701
+#: config/elements.php:706
 msgid "Dialog box displayed above the page content"
 msgstr ""
 
-#: config/elements.php:710
+#: config/elements.php:715
 msgid "Popup Title"
 msgstr ""
 
-#: config/elements.php:715
+#: config/elements.php:720
 msgid "Popup Content"
 msgstr ""
 
-#: config/elements.php:723
+#: config/elements.php:728
 msgid "Show Popup On"
 msgstr ""
 
-#: config/elements.php:726
+#: config/elements.php:731
 msgid "Button Click"
 msgstr ""
 
-#: config/elements.php:727
+#: config/elements.php:732
 msgid "Text Click"
 msgstr ""
 
-#: config/elements.php:728
+#: config/elements.php:733
 msgid "Image Click"
 msgstr ""
 
-#: config/elements.php:729
-msgid "Custom Element Click"
-msgstr ""
-
-#: config/elements.php:730
+#: config/elements.php:734
 msgid "Page Load"
 msgstr ""
 
-#: config/elements.php:733 config/elements.php:740 config/elements.php:747
-#: config/elements.php:754 config/elements.php:761 config/elements.php:770
-#: config/elements.php:778 config/elements.php:785 config/elements.php:797
-#: config/elements.php:804 config/elements.php:812
+#: config/elements.php:737 config/elements.php:744 config/elements.php:751
+#: config/elements.php:758 config/elements.php:765 config/elements.php:774
+#: config/elements.php:782 config/elements.php:789 config/elements.php:801
+#: config/elements.php:809
 msgid "Trigger"
 msgstr ""
 
-#: config/elements.php:736
+#: config/elements.php:740
 msgid "Button / Text Label"
 msgstr ""
 
-#: config/elements.php:788
+#: config/elements.php:777
+msgid "Text Size"
+msgstr ""
+
+#: config/elements.php:792
 msgid "Button / Image / Text Alignment"
 msgstr ""
 
-#: config/elements.php:800
-msgid "Custom Element CSS Selector"
-msgstr ""
-
-#: config/elements.php:807
+#: config/elements.php:804
 msgid "Popup Show Delay"
 msgstr ""
 
-#: config/elements.php:818
+#: config/elements.php:815
 msgid "Popup Size"
 msgstr ""
 
-#: config/elements.php:821
+#: config/elements.php:818
 msgid "Small"
 msgstr ""
 
-#: config/elements.php:822 functions/helpers.php:304
+#: config/elements.php:819 functions/helpers.php:303
 msgid "Medium"
 msgstr ""
 
-#: config/elements.php:823 functions/helpers.php:303
+#: config/elements.php:820 functions/helpers.php:302
 msgid "Large"
 msgstr ""
 
-#: config/elements.php:824
+#: config/elements.php:821
 msgid "Huge"
 msgstr ""
 
-#: config/elements.php:825
+#: config/elements.php:822
 msgid "Fullscreen"
 msgstr ""
 
-#: config/elements.php:832
+#: config/elements.php:829
 msgid "Remove white space around popup content"
 msgstr ""
 
-#: config/elements.php:838
+#: config/elements.php:835
 msgid "Appearance Animation"
 msgstr ""
 
-#: config/elements.php:842
+#: config/elements.php:839
 msgid "Fade In"
 msgstr ""
 
-#: config/elements.php:843
+#: config/elements.php:840
 msgid "Scale Up"
 msgstr ""
 
-#: config/elements.php:844
+#: config/elements.php:841
 msgid "Scale Down"
 msgstr ""
 
-#: config/elements.php:845
+#: config/elements.php:842
 msgid "Slide from Top"
 msgstr ""
 
-#: config/elements.php:846
+#: config/elements.php:843
 msgid "Slide from Bottom"
 msgstr ""
 
-#: config/elements.php:847
+#: config/elements.php:844
 msgid "3D Flip (Horizontal)"
 msgstr ""
 
-#: config/elements.php:848
+#: config/elements.php:845
 msgid "3D Flip (Vertical)"
 msgstr ""
 
-#: config/elements.php:860
+#: config/elements.php:857
 msgid "Overlay Background Color"
 msgstr ""
 
-#: config/elements.php:867
-msgid "Title Background Color"
+#: config/elements.php:864
+msgid "Header Background Color"
 msgstr ""
 
-#: config/elements.php:874
-msgid "Title Text Color"
+#: config/elements.php:871
+msgid "Header Text Color"
 msgstr ""
 
-#: config/elements.php:881
+#: config/elements.php:878
 msgid "Content Background Color"
 msgstr ""
 
-#: config/elements.php:888
+#: config/elements.php:885
 msgid "Content Text Color"
 msgstr ""
 
-#: config/elements.php:902
+#: config/elements.php:900
 msgid "Testimonial"
 msgstr ""
 
-#: config/elements.php:903
+#: config/elements.php:901
 msgid "Client's review about a product or service"
 msgstr ""
 
-#: config/elements.php:912
-msgid "Testimonial Text"
+#: config/elements.php:910
+msgid "Quote Text"
 msgstr ""
 
-#: config/elements.php:917
+#: config/elements.php:915
 msgid "Author Name"
 msgstr ""
 
-#: config/elements.php:923
+#: config/elements.php:921
 msgid "Author Description"
 msgstr ""
 
-#: config/elements.php:929
+#: config/elements.php:927
 msgid "Author Photo"
 msgstr ""
 
-#: config/elements.php:934
+#: config/elements.php:932
 msgid "Author Link"
 msgstr ""
 
-#: config/elements.php:939
-msgid "Testimonial Type"
+#: config/elements.php:937
+msgid "Review Type"
 msgstr ""
 
-#: config/elements.php:942
-msgid "Testimonial Text Only"
+#: config/elements.php:940
+msgid "Quote Text Only"
 msgstr ""
 
-#: config/elements.php:943
+#: config/elements.php:941
 msgid "With Scanned Document"
 msgstr ""
 
-#: config/elements.php:944
+#: config/elements.php:942
 msgid "With Video"
 msgstr ""
 
-#: config/elements.php:948
+#: config/elements.php:946
 msgid "Scanned Document"
 msgstr ""
 
-#: config/elements.php:953
-msgid "Link to Video"
+#: config/elements.php:951
+msgid "Video URL to Embed"
 msgstr ""
 
-#: config/elements.php:959
-msgid "Testimonial Style"
+#: config/elements.php:957
+msgid "Quote Style"
 msgstr ""
 
-#: config/elements.php:962
+#: config/elements.php:960
 msgid "Clean"
 msgstr ""
 
-#: config/elements.php:963
+#: config/elements.php:961
 msgid "Centered"
 msgstr ""
 
-#: config/elements.php:964
+#: config/elements.php:962
 msgid "Speech Balloon"
 msgstr ""
 
-#: config/elements.php:965
+#: config/elements.php:963
 msgid "Framed"
 msgstr ""
 
-#: config/elements.php:966
+#: config/elements.php:964
 msgid "Modern"
 msgstr ""
 
-#: config/elements.php:983
-msgid "Testimonial Text Size"
+#: config/elements.php:981
+msgid "Quote Text Size"
 msgstr ""
 
-#: config/elements.php:991
+#: config/elements.php:989
 msgid "Author Text Size"
 msgstr ""
 
-#: config/elements.php:1002
-msgid "Make Testimonial Text italic"
+#: config/elements.php:1000
+msgid "Make Quote Text italic"
+msgstr ""
+
+#: functions/helpers.php:304
+msgid "Thumbnail"
+msgstr ""
+
+#: functions/helpers.php:305
+msgid "Full Size"
+msgstr ""
+
+#: functions/helpers.php:312 functions/helpers.php:314
+msgid "Any"
+msgstr ""
+
+#: functions/helpers.php:315
+msgid "cropped"
+msgstr ""
+
+#: functions/helpers.php:315
+msgid "not cropped"
 msgstr ""
 
 #: functions/class-cl-widget.php:24
 msgid "Widget Title"
-msgstr ""
-
-#: functions/helpers.php:305
-msgid "Thumbnail"
-msgstr ""
-
-#: functions/helpers.php:306
-msgid "Full Size"
-msgstr ""
-
-#: functions/helpers.php:313 functions/helpers.php:315
-msgid "Any"
-msgstr ""
-
-#: functions/helpers.php:316
-msgid "cropped"
-msgstr ""
-
-#: functions/helpers.php:316
-msgid "not cropped"
-msgstr ""
-
-#: templates/ebuilder.php:20
-msgid "Close"
-msgstr ""
-
-#: templates/ebuilder.php:21
-msgid "Save changes"
-msgstr ""
-
-#: templates/eform/checkboxes.php:12
-msgid "Yes"
-msgstr ""
-
-#: templates/eform/eform.php:39
-msgid "General"
-msgstr ""
-
-#: templates/eform/images.php:25
-msgid "Add images"
-msgstr ""
-
-#: templates/eform/images.php:25
-msgid "Add image"
-msgstr ""
-
-#: templates/eform/link.php:24
-msgid "Insert link"
-msgstr ""
-
-#: templates/elist.php:11
-msgid "Insert shortcode"
 msgstr ""
