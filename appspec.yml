@@ -3,8 +3,10 @@ os: linux
 files:
   - source: /
     destination: /var/www/thairapysalonspa.com
-    except: /deploy-scripts/
-    except: /.idea/
+permissions:
+  - object: /
+    pattern: "*.php"
+    except: [webconfig.php]
 hooks:
   BeforeInstall:
     - location: deploy-scripts/install_dependencies.sh
