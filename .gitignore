@@ -27,4 +27,7 @@ phpinfo.php
 .htaccess
 .idea/
 .idea/workspace.xml
+<<<<<<< HEAD
 deploy-scripts/
+=======
+>>>>>>> 676c6ed3ea2781a8ef08b445789c78df38727548

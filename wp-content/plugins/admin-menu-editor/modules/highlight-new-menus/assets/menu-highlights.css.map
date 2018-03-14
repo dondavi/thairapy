@@ -1,7 +1,16 @@
+<<<<<<< HEAD
 {
 "version": 3,
 "mappings": "AAIC;;8CAEoC;EACnC,gBAAgB,EAAE,kBAAsB;AAGzC,oCAA0B;EACzB,KAAK,EAAE,eAAgB;EAEvB,8DAA0B;IACzB,KAAK,EAAE,wBAAgB;AAIzB,gCAAsB;EACrB,OAAO,EAAE,IAAI",
 "sources": ["menu-highlights.scss"],
 "names": [],
 "file": "menu-highlights.css"
+=======
+{
+"version": 3,
+"mappings": "AAIC;;8CAEoC;EACnC,gBAAgB,EAAE,kBAAsB;AAGzC,oCAA0B;EACzB,KAAK,EAAE,eAAgB;EAEvB,8DAA0B;IACzB,KAAK,EAAE,wBAAgB;AAIzB,gCAAsB;EACrB,OAAO,EAAE,IAAI",
+"sources": ["menu-highlights.scss"],
+"names": [],
+"file": "menu-highlights.css"
+>>>>>>> 676c6ed3ea2781a8ef08b445789c78df38727548
 }

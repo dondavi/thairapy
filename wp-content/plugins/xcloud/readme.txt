@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 === xcloud ===
 Contributors: ST Engineering
 Donate link:
@@ -27,3 +28,34 @@ xcloud-applications
 
 = 0.1 =
 - Initial Revision
+=======
+=== xcloud ===
+Contributors: ST Engineering
+Donate link:
+Tags:
+License: GPLv3
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
+Requires at least: 3.5
+Tested up to: 3.5
+Stable tag: 0.1
+
+xcloud-applications
+
+== Description ==
+
+xcloud-applications
+
+== Installation ==
+
+
+== Frequently Asked Questions ==
+
+
+== Screenshots ==
+
+
+== Changelog ==
+
+= 0.1 =
+- Initial Revision
+>>>>>>> 676c6ed3ea2781a8ef08b445789c78df38727548
