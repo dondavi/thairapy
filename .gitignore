@@ -27,3 +27,4 @@ phpinfo.php
 .htaccess
 .idea/
 .idea/workspace.xml
+deploy-scripts/
