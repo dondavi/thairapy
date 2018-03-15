@@ -4,9 +4,8 @@ files:
   - source: /
     destination: /var/www/thairapysalonspa.com
 permissions:
-  - object: /
-    pattern: "*.php"
-    except: [webconfig.php]
+  - object: /var/www/thairapysalonspa.com
+    owner: www-data
 hooks:
   BeforeInstall:
     - location: deploy-scripts/install_dependencies.sh
