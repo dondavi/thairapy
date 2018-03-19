@@ -1,22 +1,21 @@
 version: 0.0
 os: linux
 files:
-  - source: /
-    destination: /var/www/thairapysalonspa.com
+  - source: /wp-content/themes/
+    destination: /var/www/thairapysalonspa.com/wp-content/themes
 permissions:
-  - object: /
-    pattern: "*.php"
-    except: [webconfig.php]
+  - object: /var/www/thairapysalonspa.com/wp-content/themes
+    ownder: www-data
 hooks:
   BeforeInstall:
     - location: deploy-scripts/install_dependencies.sh
       timeout: 300
-      runas: root
+      runas: www-data
   ApplicationStart:
       - location: deploy-scripts/start_server.sh
         timeout: 300
-        runas: root
+        runas: www-data
   ApplicationStop:
     - location: deploy-scripts/stop_server.sh
       timeout: 300
-      runas: root
+      runas: www-data
