@@ -1,1 +1,0 @@
-<?php //define("INCLUDE_PATH", dirname(__FILE__)); ?>
