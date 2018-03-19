@@ -1,6 +1,4 @@
 
-
-
 *.log
 
 
@@ -28,7 +26,8 @@ phpinfo.php
 
 # User-specific stuff:
 .idea/*
-git s
+
+
 
 wp-config.php
 wp-content/advanced-cache.php
@@ -41,3 +40,4 @@ wp-content/cache/
 wp-content/mu-plugins/
 wp-content/wp-cache-config.php
 wp-content/plugins/hello.php
+
