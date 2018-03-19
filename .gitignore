@@ -6,8 +6,11 @@
 wp-content/upgrade/*
 wp-content/uploads/*
 wp-content/plugins/*
+wp-content/plugins/*
 
 
+wp-includes/
+wp-admin/
 
 
 
@@ -16,9 +19,7 @@ wp-content/plugins/*
 /readme.html
 /sitemap.xml
 /sitemap.xml.gz
-
-wp-includes/
-wp-admin/
+/*.php
 
 phpinfo.php
 .htaccess
