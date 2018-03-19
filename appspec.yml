@@ -3,9 +3,15 @@ os: linux
 files:
   - source: /wp-content/themes/
     destination: /var/www/thairapysalonspa.com/wp-content/themes
+  - source: /robots.txt
+    destination: /var/www/thairapysalonspa.com
+  - source: /sitemap.xml
+    destination: /var/www/thairapysalonspa.com
 permissions:
   - object: /var/www/thairapysalonspa.com/wp-content/themes
-    ownder: www-data
+    owner: www-data
+  - object: /var/www/thairapysalonspa.com
+    owner: www-data
 hooks:
   BeforeInstall:
     - location: deploy-scripts/install_dependencies.sh
