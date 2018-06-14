@@ -1,4 +1,5 @@
 # This space intentionally left blank
+# test
 User-Agent: *
 Allow: /wp-content/uploads/
 Disallow: /wp-admin/
