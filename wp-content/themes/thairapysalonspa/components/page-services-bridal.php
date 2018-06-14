@@ -43,6 +43,7 @@
           <p>713.527.7808 | <a href="mailto:appointments@thairapysalonspa.com">appointments@thairapysalonspa.com</a></p>
         </div>
           <!--<div class="box-border double border-grey-light bg-grey-darker">
+             Testing Commit - DS 06152018
             <p><strong>Eminence Organic Skin Care Facial</strong></p>
             <p>The more you take care, the less you pay.</p>
             <p><a href="http://thairapysalonspa.com/assets/pdf/Facial_Package_Promotion.pdf" target="_blank">Get up to 30% off now!</a></p>
