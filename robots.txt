@@ -1,10 +1,4 @@
 # This space intentionally left blank
-# This space intentionally left blank
-# This space intentionally left blank
-# This space intentionally left blank
-# This space intentionally left blank
-# This space intentionally left blank
-# This space intentionally left blank
 User-Agent: *
 Allow: /wp-content/uploads/
 Disallow: /wp-admin/
