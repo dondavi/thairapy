@@ -42,7 +42,6 @@
           <p>And of course, we're available for hair and makeup trials before your big day, as well as skin treatments (we recommend a <a href="http://thairapysalonspa.com/assets/pdf/Facial_Package_Promotion.pdf" target="_blank">series of four</a>). Just ask!</p>
           <p>713.527.7808 | <a href="mailto:appointments@thairapysalonspa.com">appointments@thairapysalonspa.com</a></p>
         </div>
-        <p><img class="img-responsive" src="<?php echo get_template_directory_uri(); ?>/framework/dist/img/loose-ends-event-2017.png" alt=""></p>
           <!--<div class="box-border double border-grey-light bg-grey-darker">
             <p><strong>Eminence Organic Skin Care Facial</strong></p>
             <p>The more you take care, the less you pay.</p>
