@@ -3,7 +3,7 @@
 jQuery(document).ready(function() {		
 	'use strict';				// use strict mode
   
-  var homepage_url = 'http://inspiredroots.com/thairapy/';
+  var homepage_url = 'https://thairapysalonspa.com/';
 	
 	// editable value
 	var logo_pos				= 1; // logo position; 1 - center, 2 - left
