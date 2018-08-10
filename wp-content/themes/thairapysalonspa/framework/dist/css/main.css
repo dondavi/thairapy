@@ -14246,12 +14246,27 @@ text-decoration:none;
 
 .text-light .sub-item-service .c1{color:#fff;}
 
-.sub-item-service .c1,.c2,.c3{
-    display:table-cell;
-    width:auto;
+.c1, 
+.sub-item-service .c1, 
+.c2, 
+.sub-item-service .c2, 
+.c3, 
+.sub-item-service .c3 {
+  white-space: normal!important;
  }
+
+@media (min-width: 768px) {
+  .c1, 
+  .sub-item-service .c1, 
+  .c2, 
+  .sub-item-service .c2, 
+  .c3, 
+  .sub-item-service .c3 {
+    white-space: nowrap!important;
+  }
+}
  
-  .sub-item-service .c1{
+.sub-item-service .c1{
   color:#222;
  }
  

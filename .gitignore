@@ -26,6 +26,7 @@ wp-admin/
 
 phpinfo.php
 .htaccess
+node_modules/
 
 
 # User-specific stuff:

@@ -3029,8 +3029,8 @@ jQuery(document).ready(function() {
 	
 	// editable value
 	var logo_pos				= 1; // logo position; 1 - center, 2 - left
-	var logo_dir_1				= 'http://thairapysalonspa.com/wp-content/themes/thairapysalonspa/framework/dist/img/logo-light.png'; // change with your logo path
-	var logo_dir_2				= 'http://thairapysalonspa.com/wp-content/themes/thairapysalonspa/framework/dist/img/logo-dark.png'; // change with your logo path (for light background)
+	var logo_dir_1				= 'https://thairapysalonspa.com/wp-content/themes/thairapysalonspa/framework/dist/img/logo-light.png'; // change with your logo path
+	var logo_dir_2				= 'https://thairapysalonspa.com/wp-content/themes/thairapysalonspa/framework/dist/img/logo-dark.png'; // change with your logo path (for light background)
 	var logo_center_top_margin	= '-35px'; // define margin top for 'center' logo image
 	var logo_left_top_margin	= '30px'; // define margin top for 'left' logo image
 	var header_sticky			= 1; // 1 - yes, 0 - no
